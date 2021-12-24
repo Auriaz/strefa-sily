@@ -1,6 +1,7 @@
 <template>
-  <div>
+    <!-- <Head>
+      <Title>Strefa Siły</Title>
+    </Head> -->
 
-    <h1 class="text-red-400">test</h1>
-  </div>
+    <NuxtPage />
 </template>
