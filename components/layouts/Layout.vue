@@ -5,7 +5,7 @@ export default {
 </script>
 
 <template>
-    <div class="container mx-auto">
+    <div class="container mx-auto flex">
         <slot />
     </div>
 </template>

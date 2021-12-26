@@ -2,11 +2,11 @@
 import App from '~/components/layouts/App.vue';
 import NavBar from '~/components/navigations/navbar/NavBar';
 import Layout from '~/components/layouts/Layout';
-import Hero from '~/components/sections/Hero';
+import Logo from '~/components/images/Logo';
 
 export default {
     name: "default",
-    components: { App, NavBar, Layout, Hero },
+    components: { App, NavBar, Layout, Logo },
 }
 </script>
 
@@ -18,13 +18,11 @@ export default {
             <layout>
                 <nav-bar>
                     <template v-slot:images>
-                        <img src="/images/logo.png" alt="">
+                        <logo src="/images/logo/logo.png" alt="" class="" />
                     </template>
                 </nav-bar>
             </layout>
         </header>
-
-        <hero />
 
         <main>
             <slot />
