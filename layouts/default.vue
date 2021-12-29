@@ -1,8 +1,9 @@
 <script>
 import App from '~/components/layouts/App.vue';
-import NavBar from '~/components/navigations/navbar/NavBar';
+import NavBar from '~/components/navigations/navbar';
 import Layout from '~/components/layouts/Layout';
 import Logo from '~/components/images/Logo';
+
 
 export default {
     name: "default",
@@ -10,21 +11,17 @@ export default {
 }
 </script>
 
-
+<script setup>
+</script>
 <template>
     <app>
         <!-- Header -->
-        <header>
-            <layout>
-                <nav-bar>
-                    <template v-slot:images>
-                        <logo src="/images/logo/logo.png" alt="" class="" />
-                    </template>
-                </nav-bar>
-            </layout>
+        <header class="relative w-full">
+            <!--  Navigation -->
+            <nav-bar />
         </header>
-
-        <main>
+        <main class="relative w-full">
+        
             <slot />
         </main>
     </app>
