@@ -1,30 +1,28 @@
 <script>
 import App from '~/components/layouts/App.vue';
-import NavBar from '~/components/navigations/navbar/NavBar';
+import Navbar from '~/components/navigations/navbar';
 import Layout from '~/components/layouts/Layout';
 import Logo from '~/components/images/Logo';
 
+
 export default {
     name: "default",
-    components: { App, NavBar, Layout, Logo },
+    components: { App, Navbar, Layout, Logo },
 }
 </script>
 
-
+<script setup>
+</script>
 <template>
     <app>
         <!-- Header -->
-        <header>
-            <layout>
-                <nav-bar>
-                    <template v-slot:images>
-                        <logo src="/images/logo/logo.png" alt="" class="" />
-                    </template>
-                </nav-bar>
-            </layout>
+        <header class="relative w-full">
+            <!--  Navigation -->
+            <navbar />
         </header>
 
-        <main>
+        <main class="container relative w-full">
+        
             <slot />
         </main>
     </app>
