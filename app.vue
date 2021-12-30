@@ -3,5 +3,5 @@
       <Title>Strefa Siły</Title>
     </Head> -->
 
-    <NuxtPage />
+    <NuxtPage class="font-Lato" />
 </template>

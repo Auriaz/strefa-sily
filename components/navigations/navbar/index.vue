@@ -10,7 +10,7 @@ export default {
 
 
 <template>
-    <div class="fixed font-bold z-20 w-full bg-dark bg-opacity-80 bg-clip-padding blur-backdrop-filter shadow-sm">
+    <div class="hidden md:block fixed z-50 font-bold w-full bg-dark bg-opacity-80 bg-clip-padding blur-backdrop-filter shadow-sm">
         <nav class="relative flex items-center w-full px-5 py-5 mx-auto lg:px-2 lg:shadow-none">
             <div class="absolute inset-0 z-0 block w-full h-full shadow-md opacity-50 lg:hidden"></div>
 

@@ -30,7 +30,7 @@ import { ref } from '#imports';
 <template>
     <!-- Features -->
     <div
-        class="flex justify-between items-center sticky top-0 pt-8 pb-8 h-screen"
+        class="hidden md:flex lg:flex justify-between items-center sticky top-0 pt-8 pb-8 h-screen"
         style="will-change:transform;transform-style:preserve-3d"
         :style="{'transform' : 'translate3d('+ x + 'px ,0px ,0px)', 'width': `${items.length * 100}vw`}"
     >

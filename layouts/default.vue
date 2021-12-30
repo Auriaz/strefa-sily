@@ -1,13 +1,13 @@
 <script>
 import App from '~/components/layouts/App.vue';
-import NavBar from '~/components/navigations/navbar';
+import Navbar from '~/components/navigations/navbar';
 import Layout from '~/components/layouts/Layout';
 import Logo from '~/components/images/Logo';
 
 
 export default {
     name: "default",
-    components: { App, NavBar, Layout, Logo },
+    components: { App, Navbar, Layout, Logo },
 }
 </script>
 
@@ -18,9 +18,10 @@ export default {
         <!-- Header -->
         <header class="relative w-full">
             <!--  Navigation -->
-            <nav-bar />
+            <navbar />
         </header>
-        <main class="relative w-full">
+
+        <main class="container relative w-full">
         
             <slot />
         </main>

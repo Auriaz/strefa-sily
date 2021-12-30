@@ -9,6 +9,13 @@ module.exports = {
     "./app.vue"
   ],
   theme: {
+      screens: {
+        "xs": '0',
+        "sm": '480px',
+        "md": '960px',
+        "lg": '1200px',
+        "xl": '1440px',
+      },
       extend: {
         animation: {
           blob: "blob 4s infinite",
@@ -48,13 +55,14 @@ module.exports = {
           'Lato': ['Lato, sans-serif']
       },
       container: {
-          padding: {
-              DEFAULT: '1rem',
-              sm: '2rem',
-              lg: '4rem',
-              xl: '5rem',
-              '2xl': '6rem',
-          },
+        padding: 0,
+        screens: {
+          "xs": '0',
+          "sm": '480px',
+          "md": '960px',
+          "lg": '1200px',
+          "xl": '1440px',
+        },
       },
   },
   plugins: [],
