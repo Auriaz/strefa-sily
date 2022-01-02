@@ -1,14 +1,13 @@
 <script>
 import Flex from '~/components/flex/Flex';
-import FxCol from '~/components/flex/FxCol';
 import XImg from '~/components/images/XImg';
-import Layout from '~/components/layouts/Layout';
 import Btn from '~/components/buttons/Btn';
 import FxRow from '~/components/flex/FxRow';
 
+
 export default {
     name: 'FeatureCard',
-    components: { Flex, XImg, FxCol, Layout, Btn, FxRow },
+    components: { Flex, XImg, Btn, FxRow },
     props: {
         item: {
             type: Object,
@@ -18,29 +17,34 @@ export default {
 }
 </script>
 
+
+
 <template>
-    <div class="relative mt-20 lg:mt-24">
-        <layout class="flex-col lg:flex-row items-center justify-center gap-x-24">
+    <div class="feature-card mt-20 flex-shrink-0 justify-center items-center relative z-20" :class="`feature-card-${item.id}`">
+        <flex class=" feature-card col-row flex-wrap w-screen h-screen lg:flex-row items-center justify-center">     
             <!-- Picture -->
-            <flex class="flex-1 justify-center z-10 mb-10 lg:mb-0">
-                <x-img :src="item.image.src" :alt="item.image.alt" class="w-5/6 h-5/6 sm:w-3/4 sm:h-3/4 md:w-full md:f-full"/>
-            </flex>
+            <div class="feature-card-image absolute shadow-gray opacity-0 shadow md:top-[25%] md:w-[45%] md:left-[55%] lg:top-[25%] lg:w-[35%] lg:left-[55%] z-20">
+                <x-img :src="item.image.src" :alt="item.image.alt" class="w-full border-blue"/>
+            </div>
+            <!-- Small image -->
+            <div  class="feature-card-image2 absolute  opacity-0 shadow-gray shadow hidden lg:block lg:top-[55%] lg:w-[20%] lg:left-[40%]  xl:top-[65%] xl:w-[20%] xl:left-[40%] z-10">
+                <x-img :src="item.image.src" :alt="item.image.alt" class="w-full border-blue"/>
+            </div>
 
-            <!-- Content -->
-            <fx-col class="flex-1 items-center lg:items-start">
-                <h3 class="text-3xl text-blue">{{ item.title }}</h3>
+                <!-- Content -->
+            <div class="feature-card-content absolute p-3 bg-gray-dark opacity-0 rounded shadow-gray shadow-2xl md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] w-[300px] h-[360px] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10">
+                <!-- Title -->
+                <h3 ref="titleFeature" class="absolute bottom-[300px] left-[0] text-4xl w-[100%] h-[60px] text-center text-dark p-3 bg-gray rounded opacity-60 z-20">{{ item.title }}</h3>
 
-                <p :class="`text-gray my-4 text-center lg:text-${item.direction === 'right' ?   'right' : 'left'} sm:w-3/4 lg:w-full`">{{ item.content }}</p>
-                
-                <fx-row class="justify-center flex-wrap gap-6">
+                <!-- Text -->
+                <p class=" text-gray  mt-[55px] mb-4 px-2 text-center lg:text-left  sm:w-3/4 lg:w-full">{{ item.content }}</p>
+
+                <!-- Actions -->
+                <fx-row class=" bottom-0 justify-center flex-wrap gap-6">
                     <btn class="btn-outlined-purple">Click</btn>
                     <btn class="btn-white">Click</btn>
                 </fx-row>
-            </fx-col>
-
-            <!-- Rounded Rectangle -->
-            <div :class="`hidden md:block overflow-hidden bg-purple rounded-${item.direction === 'right' ?   'r' : 'l'}-full absolute h-80 w-2/4 top-32 ${item.direction === 'right' ?   'right' : 'left'}-0 lg:-bottom-28 lg:-${item.direction === 'right' ?   'right' : 'left'}-36`"></div>
-        </layout>
-
+            </div>
+        </flex>
     </div>
 </template>

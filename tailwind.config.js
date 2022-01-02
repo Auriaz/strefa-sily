@@ -41,15 +41,18 @@ module.exports = {
           'blue': '#0ea5e9',
           'purple': '#7e5bef',
           'pink': '#ff49db',
-          'orange': '#ff7849',
-          'green': '#13ce66',
+          'orange': '#ff5722',
+          'green': '#62db68',
           'yellow': '#ffc82c',
           'dark': '#1e2936',
-          'gray-dark': '#273444',
           'blue-dark': '#0f172a',
           'gray': '#76889d',
+          'gray-dark': '#273444',
           'gray-light': '#d3dce6',
-          'white': '#ffffff'
+          'white': '#ffffff',
+          'amber': '#ffc107',
+          'cyan': '#00bcd4',
+          'indigo': '#3f51b5',
         },
       fontFamily: {
           'Lato': ['Lato, sans-serif']

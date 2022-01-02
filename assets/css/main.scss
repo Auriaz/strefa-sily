@@ -1,31 +1,15 @@
-@import "@fortawesome/fontawesome-free/css/all.css";
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,100;1,300&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*  Vendor file -Tailwind-  */
+@import "./vendor/tailwind.scss";
 
-// Abstract files
+/*  Abstract files -Variables, Mixin-  */
 @import "./abstracts/_variables/breakpoints";
 @import "./abstracts/_variables/colors";
-
 @import "./abstracts/_mixins/breakpoints";
 @import "./abstracts/_mixins/flex";
-// Core files
+
+/*  Core files  */
 @import "./base/global";
 @import "./base/reset";
 @import "./base/typography";
-
-.selected-circle {
-  @apply border-blue bg-blue;
-}
-
-@layer utilities {
-  .animation-delay-2000 {
-    animation-delay: 2s;
-  }
-
-  .animation-delay-4000 {
-    animation-delay: 4s;
-  }
-}

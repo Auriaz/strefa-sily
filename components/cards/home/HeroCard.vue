@@ -40,7 +40,7 @@ import { ref } from '#imports'
 
     <div class="card-tilt__box" :style="{height: height, width: width}" :class="{  'isActive--box': isActive }">
         <div class="card-tilt__box--image">
-            <img :src="`/images/${imgSrc}`" :alt="imgAlt" class="border-2 border-blue hover:border-orange" :class="{'border-orange': isActive}"/>
+            <img :src="`/images/${imgSrc}`" :alt="imgAlt" class="aspect-square object-cover border-2 border-blue hover:border-orange" :class="{'border-orange': isActive}"/>
         </div>
         <div class="card-tilt__box--content bg-gradient-to-tl from-blue  bg-dark" :class="{ 'isActive--content': isActive }">
             <h2 class="title text-white">{{ title }}</h2>

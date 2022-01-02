@@ -8,9 +8,13 @@ export default {
 }
 </script>
 
+<script setup>
+const isGrafik = useGrafik();
+</script>
+
 
 <template>
-    <div class="hidden md:block fixed z-50 font-bold w-full bg-dark bg-opacity-80 bg-clip-padding blur-backdrop-filter shadow-sm">
+    <div class="hidden md:block md:fixed z-50 font-bold w-full bg-dark bg-opacity-80 bg-clip-padding blur-backdrop-filter shadow-sm">
         <nav class="relative flex items-center w-full px-5 py-5 mx-auto lg:px-2 lg:shadow-none">
             <div class="absolute inset-0 z-0 block w-full h-full shadow-md opacity-50 lg:hidden"></div>
 
@@ -20,10 +24,11 @@ export default {
             </nuxt-link> -->
 
             <div class="relative hidden mx-8 md:flex space-x-12 flex-1 justify-center items-center gap-12 text-blue uppercase text-xs lg:ml-auto">
-                <nuxt-link class="hover:text-purple" to="/">Features</nuxt-link>
-                <nuxt-link class="hover:text-purple" to="/">Features</nuxt-link>
-                <nuxt-link class="hover:text-purple" to="/">Features</nuxt-link>
-                <nuxt-link class="hover:text-purple" to="/">Features</nuxt-link>
+                <a class="hover:text-purple" @click="isGrafik = !isGrafik" href="/#grafik">Grafik</a>
+                <a class="hover:text-purple" href="/#information">Informacje</a>
+                <a class="hover:text-purple" href="/#feature">Zajęcia </a>
+                <a class="hover:text-purple" href="/#team">Trenerzy</a>
+                <a class="hover:text-purple" href="/#price">Cennik</a>
             </div>
 
             <div class="md:hidden">

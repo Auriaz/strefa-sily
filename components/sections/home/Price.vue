@@ -1,0 +1,108 @@
+<script>
+import Btn from '~/components/buttons/Btn';
+
+export default {
+    name: 'Price',
+    components: {
+        Btn, 
+    },
+    props: {
+        personalPrices: {
+            type: Object,
+            required: true,
+        },
+        prices: {
+            type: Object,
+            required: true,
+        },
+    }
+}
+</script>
+
+<script setup>
+import { onMounted } from '#imports';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
+onMounted(() => {
+    let elements = gsap.utils.toArray('.price__box');
+
+    elements.forEach(el => {
+
+        gsap.fromTo(el, {
+            y: '-=100',
+            opacity: 0,
+        }, {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: .2,
+            // stagger: 0.2,
+            ease: 'easeInOut',
+            scrollTrigger: {
+                trigger: '.price__container',
+                start: '-150px top',
+                end: "150px 350px",
+                scrub: true,
+                // markers: true,
+                toggleActions: 'restart pause reverse pause',
+            },
+        });
+    });
+});
+</script>
+
+<template>
+    <div class="price__container mx-auto w-screen px-20 my-32 relative">
+        <div class="text-center w-full my-10">
+            <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Cennik</h2>
+            <h3 class="text-gray text-3xl mb-5">Zajęcia plus wolne wejścia.</h3>
+        </div>
+
+        <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
+            <!-- Price card -->
+            <div v-for="price in prices" :key="price.id"  class="price-card relative flex flex-col w-full h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+                <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
+
+                <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
+
+                <div class="price-card__package text-lg text-dark my-6">
+                    <h3>Pakiet składa się z: </h3>
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray text-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+</svg> {{ info.info }}</p>
+                </div>
+
+                <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
+                    <btn class=" btn-indigo hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center w-full my-10">
+            <h3 class="text-gray text-3xl mb-5">Treningi personalne</h3>
+        </div>
+
+        
+        <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
+            <!-- Price card -->
+            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full h-[370px] bg-gray-dark hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+                <h3 class="price-card__title text-gray-light text-2xl text-bold mb-4">{{ price.title }}</h3>
+
+                <p class="price-card__price text-gray mt-1"> <span class="font-bold text-gray-light text-4xl">{{ price.price }}</span> zł</p>
+
+                <div class="price-card__package text-lg text-gray-light my-6">
+                    <h3>Pakiet składa się z: </h3>
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray text-sm"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+</svg>{{ info.info }}</p>
+                </div>
+
+                <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
+                    <btn class="btn-outlined-purple hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

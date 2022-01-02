@@ -15,5 +15,7 @@ export default {
 </script>
 
 <template>
-    <img :src="`/images/${src}`"  :alt="alt"/>
+    <a href="/">
+        <img :src="`/images/${src}`"  :alt="alt"/>
+    </a>
 </template>
