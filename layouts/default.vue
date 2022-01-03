@@ -1,13 +1,11 @@
 <script>
-import App from '~/components/layouts/App.vue';
+import App from '~/components/layouts/App';
 import Navbar from '~/components/navigations/navbar';
 import Layout from '~/components/layouts/Layout';
-import Logo from '~/components/images/Logo';
-
 
 export default {
     name: "default",
-    components: { App, Navbar, Layout, Logo },
+    components: { App, Navbar, Layout },
 }
 </script>
 

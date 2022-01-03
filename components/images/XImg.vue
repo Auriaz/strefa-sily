@@ -4,7 +4,7 @@ export default {
     props: {
         src: {
             type: String,
-            default: "default.jpg"
+           required: true,
         },
         alt: {
             type: String,
@@ -15,5 +15,5 @@ export default {
 </script>
 
 <template>
-    <img :src="`/images/${src}`"  :alt="alt"/>
+    <img :src="src"  :alt="alt"/>
 </template>

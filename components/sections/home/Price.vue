@@ -69,7 +69,7 @@ onMounted(() => {
 
                 <div class="price-card__package text-lg text-dark my-6">
                     <h3>Pakiet składa się z: </h3>
-                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray text-sm"><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2  flex flex-wrap flex-row text-gray text-sm"><svg xmlns="http://www.w3.org/2000/svg" class="text-green h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
 </svg> {{ info.info }}</p>
                 </div>
@@ -94,7 +94,7 @@ onMounted(() => {
 
                 <div class="price-card__package text-lg text-gray-light my-6">
                     <h3>Pakiet składa się z: </h3>
-                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray text-sm"> <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray  flex flex-wrap flex-row  text-sm"> <svg xmlns="http://www.w3.org/2000/svg" class="text-green h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
 </svg>{{ info.info }}</p>
                 </div>

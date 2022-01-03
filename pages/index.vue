@@ -29,7 +29,7 @@ const items = ref([
     {
         id: 0,
         image: {
-            src: 'hero/hero-bg.jpg',
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg',
             alt: 'default'
         },
         title: 'Powerlifting',
@@ -38,7 +38,7 @@ const items = ref([
     {
         id: 1,
         image: {
-            src: 'hero/hero-bg.jpg',
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg',
             alt: 'default'
         },
         title: 'Cross-Training',
@@ -47,7 +47,7 @@ const items = ref([
     {
         id: 2,
         image: {
-            src: 'hero/hero-bg.jpg',
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg',
             alt: 'default'
         },
         title: 'Cross Intro',
@@ -56,7 +56,7 @@ const items = ref([
     {
         id: 3,
         image: {
-            src: 'hero/hero-bg.jpg',
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg',
             alt: 'default'
         },
         title: 'Wake Up Cross',
@@ -69,7 +69,7 @@ const data = ref([
         id:  0,
         name: 'Adam',
         surname: 'Stankiewicz',
-        image: 'users/adam_stankiewicz/avatar/adam_stankiewicz.jpg',
+        image: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/07/69995255_2516287848419388_3769486607204220928_o-1024x684.jpg',
         role: 'Trener strefy siły',
         description: 'Bla bla bla i jeszcze raz bla',
     },
@@ -77,7 +77,7 @@ const data = ref([
         id:  1,
         name: 'Adam',
         surname: 'Stankiewicz',
-        image: 'users/adam_stankiewicz/avatar/adam_stankiewicz.jpg',
+        image: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/07/69995255_2516287848419388_3769486607204220928_o-1024x684.jpg',
         role: 'Trener strefy siły',
         description: 'Bla bla bla i jeszcze raz bla',
     },
@@ -85,7 +85,7 @@ const data = ref([
         id:  2,
         name: 'Adam',
         surname: 'Stankiewicz',
-        image: 'default.jpg',
+        image: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/07/69995255_2516287848419388_3769486607204220928_o-1024x684.jpg',
         role: 'Trener strefy siły',
         description: 'Bla bla bla i jeszcze raz bla',
     },
@@ -151,7 +151,7 @@ const prices = [
         single: true,
         price: 30,
         package: [
-            {info: 'Wejście na dowolne zajecia na strefie siły'},
+            {info: 'Wejście na dowolne zajecia'},
             {info: 'Wejście pojedyńcze'},
 
         ]

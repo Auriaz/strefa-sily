@@ -9,9 +9,6 @@ import Flex from '~~/components/flex/Flex.vue';
 import Logo from '~~/components/images/logo.vue';
 import HeroCard from '~/components/cards/home/HeroCard';
 
-// import {onMounted} from 'vue'
-    import { gsap } from "gsap";
-
 export default {
     name: 'Hero',
     components: { Layout, FxRowReverse, FxCol, Btn, XImg, FxRow, Flex, Logo, HeroCard },
@@ -20,27 +17,26 @@ export default {
 
 
 <script setup>
-import { ref } from '#imports';
+const isGrafik  = useGrafik();
 
-const isGrafik = useGrafik();
 </script>
 
 <template>
     <!-- Hero -->
     <div class="relative w-screen h-screen bg-dark">
         <flex class="relative flex-wrap justify-center w-full">
-            <logo src="logo/logo.svg" alt="Logo" class="relative md:fixed md:top-10 md:left-10 z-20 w-48 h-48" />
+            <logo src="/images/logo/logo.svg" alt="Logo" class="relative md:fixed md:top-20 md:left-10 z-20 w-48 h-48" />
             
             <!-- Image -->
             <fx-row class="w-screen h-screen justify-center md:flex-1">
                 <div class="hero-box ">
      
                     <!-- Card Hero-->
-                    <hero-card class="hero-box__image hero-box__image--1" img-src="/hero/hero-bg.jpg" img-alt="Hero image" title="Nowy tytuł" width="100%" height="100%"/>
+                    <hero-card class="hero-box__image hero-box__image--1" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="100%" height="100%"/>
 
-                    <hero-card class="hero-box__image hero-box__image--2" img-src="/hero/hero-bg.jpg" img-alt="Hero image" title="Nowy tytuł" width="10rem" height="5rem"/>
+                    <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="10rem" height="5rem"/>
 
-                    <hero-card class="hero-box__image hero-box__image--3" img-src="/hero/hero-bg.jpg" img-alt="Hero image" title="Nowy tytuł" width="20rem" height="12rem"/>
+                    <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="20rem" height="12rem"/>
                 </div>
             </fx-row>
             
@@ -77,7 +73,7 @@ const isGrafik = useGrafik();
                 <btn v-if="isGrafik" @click="isGrafik = !isGrafik" class="absolute -right-3 top-0 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg></btn>
-                <x-img v-if="isGrafik" src="info/grafik.jpg" alt="Grafik" class="p-14"/>
+                <x-img v-if="isGrafik" src="/images/info/grafik.jpg" alt="Grafik" class="w-full p-14"/>
                 <!-- <div class="absolute top-0 left-0 w-full h-full bg-dark opacity-50 "></div> -->
                 <h2 v-if="isGrafik" class="text-3xl mb-6">Grafik - Strefy Siły</h2>
             </div>

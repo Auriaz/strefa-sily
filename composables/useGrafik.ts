@@ -6,7 +6,7 @@ export const useGrafik = () => {
   
   return useState('grafik', () => {
     return {
-        isGrafik: isGrafik
-      };
+      isGrafik: isGrafik
+    };
   });
 };

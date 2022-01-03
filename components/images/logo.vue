@@ -4,11 +4,11 @@ export default {
     props: {
         src: {
             type: String,
-            default: "default.jpg"
+            required: true,
         },
         alt: {
             type: String,
-            default: "Image"
+            default: "Image",
         }
     }
 }
@@ -16,6 +16,6 @@ export default {
 
 <template>
     <a href="/">
-        <img :src="`/images/${src}`"  :alt="alt"/>
+        <img :src="src"  :alt="alt"/>
     </a>
 </template>
