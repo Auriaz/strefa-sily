@@ -25,7 +25,7 @@ const isDark = useTheme();
     <!-- Hero -->
     <div class="relative w-screen h-screen" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
         <flex class="relative flex-wrap justify-center w-full">
-            <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none md:fixed md:top-10 md:left-10 z-20 w-48 h-48" />
+            <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none md:fixed md:top-10 md:left-10 z-20 md:w-40 lg:w-48 md:h-40 lg:h-48" />
             
             <!-- Image -->
             <fx-row class="w-screen h-screen justify-center md:flex-1">
@@ -59,7 +59,7 @@ const isDark = useTheme();
             </fx-col>
 
             <div v-if="isDark" class="z-10 fixed top-0 left-0">
-                <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+                <div class="hidden md:block absolute top-0 -left-4 md:w-40 md:h-40 lg:w-72 lg:h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
 
                 <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
             </div>

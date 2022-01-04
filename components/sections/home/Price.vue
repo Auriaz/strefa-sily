@@ -61,9 +61,9 @@ onMounted(() => {
             <h3 class="text-gray text-3xl mb-5">Zajęcia plus wolne wejścia.</h3>
         </div>
 
-        <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
+        <div class="price__box relative flex flex-col md:flex-row w-full  px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
             <!-- Price card -->
-            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full md:h-[500px] lg:h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
                 <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
@@ -88,7 +88,7 @@ onMounted(() => {
         
         <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
             <!-- Price card -->
-            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full h-[370px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
+            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full md:h-[500px] lg:h-[370px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
                 <h3 class="price-card__title rounded  text-2xl text-bold  mb-4" :class="`${isDark ? 'text-gray-light' : 'text-blue'}`">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-gray-light text-4xl">{{ price.price }}</span> zł</p>
