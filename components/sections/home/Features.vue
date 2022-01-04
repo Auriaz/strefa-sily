@@ -31,6 +31,7 @@ import { onMounted } from '#imports'
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+const isDark = useTheme();
 
 onMounted(() => {
     const cards = gsap.utils.toArray('.feature-card');
@@ -41,7 +42,7 @@ onMounted(() => {
 
     images1.forEach((image, index) => {
 
-        gsap.fromTo(image, {
+        gsap.fromTo(`.feature-card-image-${index}`, {
             opacity: 0,
             x: 400,
         }, {
@@ -52,7 +53,7 @@ onMounted(() => {
             ease: 'easeInOut',
             pin:true,
             scrollTrigger: {
-                trigger: cards[index],
+                trigger: `.feature-card-${index}`,
                 // horizontal: true,
                 start: '-200px top',
                 end: "50px",
@@ -67,7 +68,7 @@ onMounted(() => {
 
     images2.forEach((image, index) => {
 
-        gsap.fromTo(image, {
+        gsap.fromTo(`.feature-card-image2-${index}`, {
             x: -300,
             opacity: 0,
         }, {
@@ -76,7 +77,7 @@ onMounted(() => {
             duration: duration,
             delay: .2,
             scrollTrigger: {
-                trigger: cards[index],
+                trigger:  `.feature-card-${index}`,
                 // horizontal: true,
                 start: '-200px top',
                 end: "50px",
@@ -91,7 +92,7 @@ onMounted(() => {
 
     contents.forEach((content, index )=> {
 
-        gsap.fromTo(content, {
+        gsap.fromTo(`.feature-card-content-${index}`, {
             opacity: 0,
             y: -400,
         }, {
@@ -101,7 +102,7 @@ onMounted(() => {
             delay: .2,
             ease: 'easeInOut',
             scrollTrigger: {
-                trigger: cards[index],
+                trigger: `.feature-card-${index}`,
                 // horizontal: true,
                 start: '-200px top',
                 end: "50px",
@@ -120,6 +121,7 @@ onMounted(() => {
 <template>
     <!-- Features -->
     <div class="features-container snap-x snap-mandatory justify-between items-center sticky top-0 pt-8 pb-8 h-screen"
+        :class="`${isDark ? 'bg-dark' : 'bg-blue'}`"
         style="will-change:transform;transform-style:preserve-3d"
         :style="{'transform' : 'translate('+ x + 'px)', 'width': `${items.length * 100}vw`}"
     >

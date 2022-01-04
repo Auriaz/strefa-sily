@@ -17,32 +17,34 @@ export default {
 }
 </script>
 
-
+<script setup>
+const isDark = useTheme();
+</script>
 
 <template>
-    <div class="feature-card mt-20 flex-shrink-0 justify-center items-center relative z-20" :class="`feature-card-${item.id}`">
+    <div class="feature-card mt-20 justify-center items-center relative z-20" :class="`feature-card-${item.id}`">
         <flex class=" feature-card col-row flex-wrap w-screen h-screen lg:flex-row items-center justify-center">     
             <!-- Picture -->
-            <div class="feature-card-image absolute shadow-gray opacity-0 shadow md:top-[25%] md:w-[45%] md:left-[55%] lg:top-[25%] lg:w-[35%] lg:left-[55%] z-20">
+            <div class="feature-card-image absolute shadow-gray shadow md:top-[25%] md:w-[45%] md:left-[55%] lg:top-[25%] lg:w-[35%] lg:left-[55%] z-20" :class="`feature-card-image-${item.id}`">
                 <x-img :src="item.image.src" :alt="item.image.alt" class="w-full border-blue"/>
             </div>
             <!-- Small image -->
-            <div  class="feature-card-image2 absolute  opacity-0 shadow-gray shadow hidden lg:block lg:top-[55%] lg:w-[20%] lg:left-[40%]  xl:top-[65%] xl:w-[20%] xl:left-[40%] z-10">
+            <div  class="feature-card-image2 absolute  opacity-0 shadow-gray shadow hidden lg:block lg:top-[55%] lg:w-[20%] lg:left-[40%]  xl:top-[65%] xl:w-[20%] xl:left-[40%] z-10"  :class="`feature-card-image2-${item.id}`">
                 <x-img :src="item.image.src" :alt="item.image.alt" class="w-full border-blue"/>
             </div>
 
                 <!-- Content -->
-            <div class="feature-card-content absolute p-3 bg-gray-dark opacity-0 rounded shadow-gray shadow-2xl md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] w-[300px] h-[360px] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10">
+            <div class="feature-card-content absolute p-3  rounded shadow-gray shadow-2xl md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] w-[300px] h-[360px] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10"  :class="`feature-card-content-${item.id}  ${isDark ? 'bg-dark' : 'bg-white'}`">
                 <!-- Title -->
-                <h3 ref="titleFeature" class="absolute bottom-[300px] left-[0] text-4xl w-[100%] h-[60px] text-center text-dark p-3 bg-gray rounded opacity-60 z-20">{{ item.title }}</h3>
+                <h3 class="absolute bottom-[300px] left-[0] text-4xl w-[100%] h-[60px] text-center p-3 rounded z-20" :class="`${isDark ? 'text-dark bg-gray' : 'bg-blue-dark text-blue'}`">{{ item.title }}</h3>
 
                 <!-- Text -->
-                <p class=" text-gray  mt-[55px] mb-4 px-2 text-center lg:text-left  sm:w-3/4 lg:w-full">{{ item.content }}</p>
+                <p class="text-gray mt-[55px] mb-4 px-2 text-center lg:text-left sm:w-3/4 lg:w-full">{{ item.content }}</p>
 
                 <!-- Actions -->
                 <fx-row class=" bottom-0 justify-center flex-wrap gap-6">
-                    <btn class="btn-outlined-purple">Click</btn>
-                    <btn class="btn-white">Click</btn>
+                    <btn class="btn-outlined-blue">Click</btn>
+                    <btn class="btn-blue">Click</btn>
                 </fx-row>
             </div>
         </flex>

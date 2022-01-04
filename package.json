@@ -18,6 +18,7 @@
     "tailwindcss": "^3.0.8"
   },
   "dependencies": {
+    "@fortawesome/vue-fontawesome": "^3.0.0-5",
     "gsap": "^3.9.1"
   }
 }

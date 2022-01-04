@@ -33,6 +33,7 @@ export default {
 <script setup>
 import { ref } from '#imports'
     const isActive = ref(false);
+    const isDark = useTheme();
 </script>
 
 <template>
@@ -42,7 +43,8 @@ import { ref } from '#imports'
         <div class="card-tilt__box--image">
             <img :src="imgSrc" :alt="imgAlt" class="aspect-square object-cover border-2 border-blue hover:border-orange" :class="{'border-orange': isActive}"/>
         </div>
-        <div class="card-tilt__box--content bg-gradient-to-tl from-blue  bg-dark" :class="{ 'isActive--content': isActive }">
+
+        <div class="card-tilt__box--content bg-blue" :class="{ 'isActive--content': isActive,  'bg-gradient-to-tl from-dark shadow-gray-light shadow': isDark}">
             <h2 class="title text-white">{{ title }}</h2>
             <p class="content text-dark">{{ content }}</p>
         </div>

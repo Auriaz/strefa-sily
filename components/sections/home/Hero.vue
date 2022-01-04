@@ -18,14 +18,14 @@ export default {
 
 <script setup>
 const isGrafik  = useGrafik();
-
+const isDark = useTheme();
 </script>
 
 <template>
     <!-- Hero -->
-    <div class="relative w-screen h-screen bg-dark">
+    <div class="relative w-screen h-screen" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
         <flex class="relative flex-wrap justify-center w-full">
-            <logo src="/images/logo/logo.svg" alt="Logo" class="relative md:fixed md:top-20 md:left-10 z-20 w-48 h-48" />
+            <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none md:fixed md:top-10 md:left-10 z-20 w-48 h-48" />
             
             <!-- Image -->
             <fx-row class="w-screen h-screen justify-center md:flex-1">
@@ -42,10 +42,10 @@ const isGrafik  = useGrafik();
             
             <!-- Content -->
             <fx-col class="hero-content z-30 absolute flex-wrap text-center py-4 px-4">
-                <h2 class="text-white font-bold  text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left mb-6">
+                <h2 class="text-white font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left mb-6">
                     
-                    <span class="text-blue">S</span>trefa
-                    <span class="text-blue">S</span>iły
+                    <span :class="`${isDark ? 'text-blue': 'text-blue-dark'}`">S</span>trefa
+                    <span :class="`${isDark ? 'text-blue': 'text-blue-dark'}`">S</span>iły
                 </h2>
 
                 <p class=" text-gray md:text-dark text-lg text-center lg:text-left mb-6">
@@ -53,26 +53,29 @@ const isGrafik  = useGrafik();
                 </p>
 
                 <fx-row class="justify-center flex-wrap gap-6">
-                    <btn @click="isGrafik = !isGrafik" class="btn-outlined-blue">Grafik</btn>
+                    <btn @click="isGrafik = !isGrafik" class="btn-blue">Grafik</btn>
                     <btn class="btn-white">Kup bilet online</btn>
                 </fx-row>
             </fx-col>
 
-            <div class="z-10 fixed top-0 left-0">
+            <div v-if="isDark" class="z-10 fixed top-0 left-0">
                 <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
 
                 <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
             </div>
 
             <!-- Background -->
-            <div class="z-10 block overflow-hidden  h-full w-full absolute opacity-30 bottom-0 right-0 bg-gradient-to-tl from-blue via-purple bg-dark "></div>
+            <div class="z-10 block overflow-hidden  h-full w-full absolute opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark' : ''}`"></div>
 
-            <div class="z-10 overlay hidden md:block overflow-hidden  h-full w-full opacity-80 absolute bottom-0 right-0 bg-gradient-to-tl from-blue via-purple bg-dark "></div>
+            <div class="z-10 overlay block overflow-hidden  h-full w-full opacity-80 absolute bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
 
-            <div id="grafik" class="absolute scroll-mt-28 top-36 left-[500px] rounded-full skew-y-12 shadow-gray-light shadow-2xl z-40 w-14 h-14 text-center transition-all duration-75 ease-in" :class="{isGrafik: isGrafik}">
-                <btn v-if="isGrafik" @click="isGrafik = !isGrafik" class="absolute -right-3 top-0 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in"><svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-</svg></btn>
+            <!-- Grafik file -->
+            <div id="grafik" class="absolute scroll-mt-28 top-36 left-[500px] rounded-full skew-y-12  z-40 w-14 h-14 text-center transition-all duration-75 ease-in" :class="{isGrafik: isGrafik, 'shadow-gray-light shadow-2xl': isDark}">
+                <btn v-if="isGrafik" @click="isGrafik = !isGrafik" class="absolute -right-3 top-0 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </btn>
                 <x-img v-if="isGrafik" src="/images/info/grafik.jpg" alt="Grafik" class="w-full p-14"/>
                 <!-- <div class="absolute top-0 left-0 w-full h-full bg-dark opacity-50 "></div> -->
                 <h2 v-if="isGrafik" class="text-3xl mb-6">Grafik - Strefy Siły</h2>

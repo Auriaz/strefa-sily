@@ -27,7 +27,7 @@ export default {
 }
 
 .btn-white {
-  @apply bg-white hover:bg-purple hover:text-white;
+  @apply bg-white  text-blue hover:bg-blue hover:text-white;
 }
 
 

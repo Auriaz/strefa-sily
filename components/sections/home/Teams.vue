@@ -21,6 +21,7 @@ import { ref, onMounted } from '#imports';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+const isDark = useTheme();
 
 const isAction = ref(false);
 const target = ref(null);
@@ -80,8 +81,8 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-screen mt-32 relative">
-        <div class="text-center w-full my-10">
+    <div class="w-screen h-auto py-16 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
+        <div class="text-center w-full my-12">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Nasi trenerzy</h2>
             <h4 class="text-gray mb-5">This is a simple TailwindCSS pricing table.</h4>
         </div>

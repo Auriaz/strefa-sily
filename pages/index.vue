@@ -212,24 +212,25 @@ function handleScroll() {
     }
 }
 
-function handleScroll2() {
+// function handleScroll2() {
+//     if(isDark) {
+//         if (window.scrollY <= informationSection.value.offsetHeight) {
+//             bgColor.value = 'bg-white';
+//         }
     
-    if (window.scrollY <= informationSection.value.offsetHeight) {
-        bgColor.value = 'bg-white';
-    }
-
-    if (window.scrollY >= informationSection.value.offsetHeight) {
-        bgColor.value = 'bg-dark';
-    }
-
-    if (window.scrollY >= featureSection.value.offsetHeight + window.innerHeight + (window.innerHeight*0.9)) {
-        bgColor.value = 'bg-white';
-    }
-}
+//         if (window.scrollY >= informationSection.value.offsetHeight) {
+//             bgColor.value = 'bg-dark';
+//         }
+    
+//         if (window.scrollY >= featureSection.value.offsetHeight + window.innerHeight + (window.innerHeight*0.9)) {
+//             bgColor.value = 'bg-white';
+//         }
+//     }
+// }
 
 onMounted(() => {
     document.addEventListener('scroll', handleScroll);
-    document.addEventListener('scroll', handleScroll2);
+    // document.addEventListener('scroll', handleScroll2);
 })
 </script>
 
@@ -254,11 +255,11 @@ onMounted(() => {
         </section>
         <!-- <features-sm class="flex md:hidden" :class="bgColor" :x="X" :items="items" /> -->
 
-        <section id="team" ref="teamSection" class="snap-start mt-12 scroll-mt-0 relative block m-auto w-full h-screen" >
+        <section id="team" ref="teamSection" class="snap-start scroll-mt-0 relative block m-auto w-full" >
             <teams :teams="data"/>
         </section>
 
-        <section id="price" ref="priceSection" class="snap-start mt-12 scroll-mt-0 relative block m-auto w-full h-screen" >
+        <section id="price" ref="priceSection" class="snap-start scroll-mt-0 relative block m-auto w-full h-screen" >
             <price :prices="prices" :personalPrices="personalPrices" />
         </section>
     </flex>

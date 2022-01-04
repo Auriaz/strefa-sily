@@ -24,6 +24,7 @@ import { onMounted } from '#imports';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
+const isDark = useTheme();
 
 onMounted(() => {
     let elements = gsap.utils.toArray('.price__box');
@@ -54,15 +55,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="price__container mx-auto w-screen px-20 my-32 relative">
-        <div class="text-center w-full my-10">
+    <div class="price__container mx-auto w-screen px-20 py-16 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
+        <div class="text-center w-full my-12">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Cennik</h2>
             <h3 class="text-gray text-3xl mb-5">Zajęcia plus wolne wejścia.</h3>
         </div>
 
         <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
             <!-- Price card -->
-            <div v-for="price in prices" :key="price.id"  class="price-card relative flex flex-col w-full h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
                 <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
@@ -87,8 +88,8 @@ onMounted(() => {
         
         <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
             <!-- Price card -->
-            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full h-[370px] bg-gray-dark hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
-                <h3 class="price-card__title text-gray-light text-2xl text-bold mb-4">{{ price.title }}</h3>
+            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full h-[370px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
+                <h3 class="price-card__title rounded  text-2xl text-bold  mb-4" :class="`${isDark ? 'text-gray-light' : 'text-blue'}`">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-gray-light text-4xl">{{ price.price }}</span> zł</p>
 
@@ -100,7 +101,7 @@ onMounted(() => {
                 </div>
 
                 <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
-                    <btn class="btn-outlined-purple hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
+                    <btn class="btn-outlined-blue hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
                 </div>
             </div>
         </div>
