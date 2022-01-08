@@ -10,17 +10,18 @@ export default {
 </script>
 
 <script setup>
+const isDark = useTheme();
 </script>
+
 <template>
-    <app>
+    <app :class="isDark ? 'bg-dark text-gray-light' : 'bg-white text-blue-dark'">
         <!-- Header -->
         <header class="relative w-full">
             <!--  Navigation -->
             <navbar />
         </header>
 
-        <main class="container relative w-full">
-        
+        <main class="container relative w-full ">
             <slot />
         </main>
     </app>

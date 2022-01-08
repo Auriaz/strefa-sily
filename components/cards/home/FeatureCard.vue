@@ -22,10 +22,10 @@ const isDark = useTheme();
 </script>
 
 <template>
-    <div class="feature-card mt-20 justify-center items-center relative z-20" :class="`feature-card-${item.id}`">
+    <div class="feature-card mt-20 justify-center items-center relative z-20 mx-4" :class="`feature-card-${item.id}`">
         <flex class=" feature-card col-row flex-wrap w-screen h-screen lg:flex-row items-center justify-center">     
             <!-- Picture -->
-            <div class="feature-card-image absolute shadow-gray shadow md:top-[25%] md:w-[45%] md:left-[55%] lg:top-[25%] lg:w-[35%] lg:left-[55%] z-20" :class="`feature-card-image-${item.id}`">
+            <div class="feature-card-image absolute shadow-gray shadow hidden xs:block top-[25%] w-[45%] left-[55%] lg:top-[25%] lg:w-[35%] lg:left-[55%] z-20" :class="`feature-card-image-${item.id}`">
                 <x-img :src="item.image.src" :alt="item.image.alt" class="w-full border-blue"/>
             </div>
             <!-- Small image -->
@@ -34,7 +34,7 @@ const isDark = useTheme();
             </div>
 
                 <!-- Content -->
-            <div class="feature-card-content absolute p-3  rounded shadow-gray shadow-2xl md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] w-[300px] h-[360px] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10"  :class="`feature-card-content-${item.id}  ${isDark ? 'bg-dark' : 'bg-white'}`">
+            <div class="feature-card-content absolute p-3 rounded shadow-gray shadow-2xl min-w-[240px] max-w-[320px] h-[360px] left-0  top-10 md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10"  :class="`feature-card-content-${item.id}  ${isDark ? 'bg-dark' : 'bg-white'}`">
                 <!-- Title -->
                 <h3 class="absolute bottom-[300px] left-[0] text-4xl w-[100%] h-[60px] text-center p-3 rounded z-20" :class="`${isDark ? 'text-dark bg-gray' : 'bg-blue-dark text-blue'}`">{{ item.title }}</h3>
 

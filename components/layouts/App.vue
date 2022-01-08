@@ -1,13 +1,5 @@
 <template>
-    <div class="application scroll-smooth hover:scroll-auto">
+    <div class="w-screen min-h-screen relative flex flex-wrap flex-col justify-start items-center scroll-smooth hover:scroll-auto">
         <slot></slot>
     </div>
 </template>
-
-<style lang="scss" scoped>
-.application {
-    width: 100%;
-    min-height: 100vh;
-    position: relative;
-}
-</style>

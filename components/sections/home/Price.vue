@@ -55,24 +55,26 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="price__container mx-auto w-screen px-20 py-16 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
+    <div class="price__container min-h-full w-full px-5 xs:px-20 py-16 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
         <div class="text-center w-full my-12">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Cennik</h2>
             <h3 class="text-gray text-3xl mb-5">Zajęcia plus wolne wejścia.</h3>
         </div>
 
-        <div class="price__box relative flex flex-col md:flex-row w-full  px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
+        <div class="price__box relative flex flex-col md:flex-row flex-wrap w-full px-2 md:px-0 mt-10 justify-center items-center gap-6 snap-x">
             <!-- Price card -->
-            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full md:h-[500px] lg:h-[400px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full min-h-max md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
                 <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
 
-                <div class="price-card__package text-lg text-dark my-6">
+                <div class="price-card__package text-lg text-dark mt-6 mb-16">
                     <h3>Pakiet składa się z: </h3>
-                    <p v-for="(info, index) in price.package" :key="index" class="my-2  flex flex-wrap flex-row text-gray text-sm"><svg xmlns="http://www.w3.org/2000/svg" class="text-green h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-</svg> {{ info.info }}</p>
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2  flex flex-wrap flex-row text-gray text-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-green hidden 3xs:block h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg> {{ info.info }}
+                    </p>
                 </div>
 
                 <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
@@ -86,18 +88,21 @@ onMounted(() => {
         </div>
 
         
-        <div class="price__box relative flex flex-col md:flex-row w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
+        <div class="price__box relative flex flex-col md:flex-row flex-wrap w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
             <!-- Price card -->
-            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full md:h-[500px] lg:h-[370px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
+            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full min-h-min md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
                 <h3 class="price-card__title rounded  text-2xl text-bold  mb-4" :class="`${isDark ? 'text-gray-light' : 'text-blue'}`">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-gray-light text-4xl">{{ price.price }}</span> zł</p>
 
-                <div class="price-card__package text-lg text-gray-light my-6">
+                <div class="price-card__package text-lg text-gray-light mt-6 mb-16 ">
                     <h3>Pakiet składa się z: </h3>
-                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray  flex flex-wrap flex-row  text-sm"> <svg xmlns="http://www.w3.org/2000/svg" class="text-green h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-</svg>{{ info.info }}</p>
+                    <p v-for="(info, index) in price.package" :key="index" class="my-2 text-gray  flex flex-wrap flex-row  text-sm"> 
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-green hidden 3xs:block 
+                         h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>{{ info.info }}
+                    </p>
                 </div>
 
                 <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">

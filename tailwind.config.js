@@ -10,15 +10,23 @@ module.exports = {
   ],
   theme: {
       screens: {
-        "xs": '280px',
+        "3xs": '240px',
+        "2xs": '320px',
+        "xs": '480px',
         "sm": '720px',
         "md": '960px',
         "lg": '1200px',
         "xl": '1440px',
+        "2xl": '1600px',
+        "3xl": '1920px',
       },
       extend: {
         animation: {
           blob: "blob 4s infinite",
+          snake1: "snake1 2s linear infinite",
+          snake2: "snake2 2s linear infinite",
+          snake3: "snake3 2s linear infinite",
+          snake4: "snake4 2s linear infinite",
         },
         keyframes: {
           blob: {
@@ -34,7 +42,39 @@ module.exports = {
             "100%": {
               transform: "translate(0px, 0px) scale(1)",
             },
-          }
+          },
+          snake1: {
+            "0%": {
+              transform: "translateX(-100%)",
+            },
+            "100%": {
+              transform: "translateX(100%)",
+            },
+          },
+          snake2: {
+            "0%": {
+              transform: "translateY(-100%)",
+            },
+            "100%": {
+              transform: "translateY(100%)",
+            },
+          },
+          snake3: {
+            "0%": {
+              transform: "translateX(100%)",
+            },
+            "100%": {
+              transform: "translateX(-100%)",
+            },
+          },
+          snake4: {
+            "0%": {
+              transform: "translateY(100%)",
+            },
+            "100%": {
+              transform: "translateY(-100%)",
+            },
+          },
         }
       },
       colors: {
@@ -59,13 +99,6 @@ module.exports = {
       },
       container: {
         padding: 0,
-        screens: {
-          "xs": '0',
-          "sm": '480px',
-          "md": '960px',
-          "lg": '1200px',
-          "xl": '1440px',
-        },
       },
   },
   plugins: [],

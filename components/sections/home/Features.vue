@@ -120,7 +120,7 @@ onMounted(() => {
 
 <template>
     <!-- Features -->
-    <div class="features-container snap-x snap-mandatory justify-between items-center sticky top-0 pt-8 pb-8 h-screen"
+    <div class="features-container snap-x snap-mandatory justify-between items-center sticky top-0 py-8 h-screen"
         :class="`${isDark ? 'bg-dark' : 'bg-blue'}`"
         style="will-change:transform;transform-style:preserve-3d"
         :style="{'transform' : 'translate('+ x + 'px)', 'width': `${items.length * 100}vw`}"

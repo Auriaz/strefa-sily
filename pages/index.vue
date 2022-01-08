@@ -2,7 +2,7 @@
 import Btn from '~/components/buttons/Btn';
 import Hero from '~/components/sections/home/Hero';
 import Features from '~/components/sections/home/Features';
-// import FeaturesMs from '~/components/sections/home/FeaturesMs';
+import FeaturesSm from '~/components/sections/home/FeaturesSm';
 import FxCol from '~/components/flex/FxCol';
 import Layout from '~/components/layouts/Layout.vue';
 import Teams from '~/components/sections/home/Teams';
@@ -11,7 +11,7 @@ import Price from '~/components/sections/home/Price';
 
 export default {
     name: 'Homepage',
-    components: { Btn, Hero, Features,  Teams, FxCol, Layout, Information, Price },
+    components: { Btn, Hero, Features, FeaturesSm,  Teams, FxCol, Layout, Information, Price },
     layouts: 'default',
 }
 </script>
@@ -23,7 +23,6 @@ const X = ref(null);
 const Y = ref(null);
 const informationSection = ref(null);
 const featureSection = ref(null);
-const bgColor = ref('');
 
 const items = ref([
     {
@@ -212,33 +211,16 @@ function handleScroll() {
     }
 }
 
-// function handleScroll2() {
-//     if(isDark) {
-//         if (window.scrollY <= informationSection.value.offsetHeight) {
-//             bgColor.value = 'bg-white';
-//         }
-    
-//         if (window.scrollY >= informationSection.value.offsetHeight) {
-//             bgColor.value = 'bg-dark';
-//         }
-    
-//         if (window.scrollY >= featureSection.value.offsetHeight + window.innerHeight + (window.innerHeight*0.9)) {
-//             bgColor.value = 'bg-white';
-//         }
-//     }
-// }
-
 onMounted(() => {
     document.addEventListener('scroll', handleScroll);
-    // document.addEventListener('scroll', handleScroll2);
 })
 </script>
 
 <template>
-    <flex class="flex-wrap justify-center snap-y snap-mandatory relative w-full transition duration-500 ease-in-out">
+    <flex class="flex-wrap justify-center snap-y snap-mandatory relative w-full min-h-full transition duration-500 ease-in-out">
         <Html>
             <Head>
-                <Title>Home -StrefaSiły</Title>
+                <Title>Strefa Siły</Title>
             </Head>
         </Html>
         
@@ -246,20 +228,24 @@ onMounted(() => {
             <hero  />
         </section>
 
-        <section id="information" ref="informationSection" class="snap-start scroll-mt-0 relative block h-screen w-full"> 
+        <section id="information" ref="informationSection" class="snap-start scroll-mt-0 relative hidden md:block md:h-screen w-full"> 
             <information  />
         </section>
 
-        <section id="feature" ref="featureSection" class="snap-start hidden md:block scroll-mt-0 relative m-auto w-full" :style="{'height': `${items.length * 100}vw`}" >
-            <features class="hidden md:flex" :class="bgColor" :x="X" :y="Y" :items="items" />
+        <section id="feature" ref="featureSection" class="snap-start hidden md:block scroll-mt-0 min-h-full relative m-auto w-screen" :style="{'height': `${items.length * 100}vw`}" >
+            <features class="hidden md:flex" :x="X" :y="Y" :items="items" />
+            <features-sm class="flex md:hidden min-h-full" :items="items" />
         </section>
-        <!-- <features-sm class="flex md:hidden" :class="bgColor" :x="X" :items="items" /> -->
+
+        <section id="feature-sm" ref="featureSection-sm" class="snap-start block mb-20 md:hidden scroll-mt-0 relative m-auto w-screen" >
+            <features-sm class="flex md:hidden min-h-full" :items="items" />
+        </section>
 
         <section id="team" ref="teamSection" class="snap-start scroll-mt-0 relative block m-auto w-full" >
             <teams :teams="data"/>
         </section>
 
-        <section id="price" ref="priceSection" class="snap-start scroll-mt-0 relative block m-auto w-full h-screen" >
+        <section id="price" ref="priceSection" class="snap-start scroll-mt-0 relative block m-auto w-full min-h-full" >
             <price :prices="prices" :personalPrices="personalPrices" />
         </section>
     </flex>

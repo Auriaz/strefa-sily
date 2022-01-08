@@ -49,8 +49,8 @@ onMounted(() => {
             // stagger: 0.2,
             ease: 'ease',
             scrollTrigger: {
-                trigger: '.team-cart__container',
-                start: '-250px top',
+                trigger: '.team-cart',
+                start: '-300px top',
                 end: "top 350px",
                 scrub: true,
                 // markers: true,
@@ -81,15 +81,15 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="w-screen h-auto py-16 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
-        <div class="text-center w-full my-12">
+    <div class="team-cart h-auto w-full py-8 md:py-16 px-5 xs:px-10 relative" :class="`${isDark ? 'bg-blue-dark' : 'bg-white'}`">
+        <div class="text-center w-full my-3 md:my-12">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Nasi trenerzy</h2>
             <h4 class="text-gray mb-5">This is a simple TailwindCSS pricing table.</h4>
         </div>
 
         <ul class="team-cart__container mt-10 w-full flex justify-center items-center gap-8 snap-x" :class="teams.length > 3 ? 'sm:overflow-x-scroll lg:overflow-x-hidden': 'flex-col md:flex-row'">
             <!-- Coach cards -->
-            <li v-for="coach in teams" :key="coach.id" class="tilt-card rounded-lg hover:bg-dark hover:border-2 hover:border-blue px-8 py-14 relative snap-center hover:shadow-xl" :class="`tilt-card-${coach.id}`">
+            <li v-for="coach in teams" :key="coach.id" class="flex tilt-card w-full justify-center items-center rounded-lg hover:bg-dark hover:border-2 hover:border-blue md:px-8 md:py-14 relative snap-center hover:shadow-xl" :class="`tilt-card-${coach.id}`">
                 <x-img :src="coach.image" :alt="coach.name" class="tilt-card__image2 absolute inset-0 opacity-0 h-full w-full object-cover object-bottom"/>
                 <h2 class="tilt-card__title text-gray text-center text-xl font-medium uppercase transition-all duration-500 opacity-0 z-10 absolute top-0 left-0 w-full">
                     {{ coach.name }} {{ coach.surname }}
@@ -101,7 +101,7 @@ onMounted(() => {
                     </svg>
                 </nuxt-link>
                 
-                <div class="tilt-card__box relative flex-shrink-0 max-w-[30vw] overflow-hidden rounded-3xl" :class="`box-image-${coach.id}`">
+                <div class="tilt-card__box relative flex-shrink-0 max-w-[240px]  overflow-hidden rounded-3xl" :class="`box-image-${coach.id}`">
 
                     <x-img :src="coach.image" :alt="coach.name" class="tilt-card__image absolute inset-0  h-[350px] w-[250px] object-cover object-bottom"/>
 

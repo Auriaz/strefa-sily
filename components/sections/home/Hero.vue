@@ -8,81 +8,92 @@ import FxRow from '~/components/flex/FxRow';
 import Flex from '~~/components/flex/Flex.vue';
 import Logo from '~~/components/images/logo.vue';
 import HeroCard from '~/components/cards/home/HeroCard';
+import BtnIcon from '~/components/buttons/BtnIcon.vue';
 
 export default {
     name: 'Hero',
-    components: { Layout, FxRowReverse, FxCol, Btn, XImg, FxRow, Flex, Logo, HeroCard },
+    components: { Layout, FxRowReverse, FxCol, Btn, BtnIcon, XImg, FxRow, Flex, Logo, HeroCard },
 }
 </script>
 
 
 <script setup>
+import { ref } from "#imports";
+
 const isGrafik  = useGrafik();
 const isDark = useTheme();
+const isFullscreen = ref(false);
 </script>
 
 <template>
     <!-- Hero -->
-    <div class="relative w-screen h-screen" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
-        <flex class="relative flex-wrap justify-center w-full">
-            <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none md:fixed md:top-10 md:left-10 z-20 md:w-40 lg:w-48 md:h-40 lg:h-48" />
-            
-            <!-- Image -->
-            <fx-row class="w-screen h-screen justify-center md:flex-1">
-                <div class="hero-box ">
-     
-                    <!-- Card Hero-->
-                    <hero-card class="hero-box__image hero-box__image--1" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="100%" height="100%"/>
+    <flex class="relative flex-wrap justify-center w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
+        <!-- logo -->
+        <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none top-0 z-20 w-36 h-36 sm:top-10 md:fixed md:left-10 xl:w-48 xl:h-48" />
+        
+        <!-- Image -->
+        <fx-row class="hidden md:flex w-screen h-screen justify-center md:flex-1">
+            <div class="hero-box ">
+    
+                <!-- Card Hero-->
+                <hero-card class="hero-box__image hero-box__image--1" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="100%" height="100%"/>
 
-                    <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="10rem" height="5rem"/>
+                <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="10rem" height="5rem"/>
 
-                    <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="20rem" height="12rem"/>
-                </div>
+                <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="20rem" height="12rem"/>
+            </div>
+        </fx-row>
+        
+        <!-- Content -->
+        <fx-col class="hero-content z-30 absolute flex-wrap text-center py-4 px-4">
+            <h2 class="mb-6 font-bold text-4xl text-center md:text-left lg:text-5xl xl:text-6xl" :class="`${isDark ? 'text-white': 'text-blue-dark'}`">
+                
+                <span :class="`${isDark ? 'text-blue': 'text-dark'}`">S</span>trefa
+                <span :class="`${isDark ? 'text-blue': 'text-dark'}`">S</span>iły
+            </h2>
+
+            <p class=" text-dark text-lg text-center lg:text-left mb-6">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ad quis quaerat.
+            </p>
+
+            <fx-row class="justify-center flex-wrap gap-6">
+                <btn @click="isGrafik = !isGrafik" class="btn-blue">Grafik</btn>
+                <btn class="btn-white">Kup bilet online</btn>
             </fx-row>
-            
-            <!-- Content -->
-            <fx-col class="hero-content z-30 absolute flex-wrap text-center py-4 px-4">
-                <h2 class="text-white font-bold text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center md:text-left mb-6">
-                    
-                    <span :class="`${isDark ? 'text-blue': 'text-blue-dark'}`">S</span>trefa
-                    <span :class="`${isDark ? 'text-blue': 'text-blue-dark'}`">S</span>iły
-                </h2>
+        </fx-col>
 
-                <p class=" text-gray md:text-dark text-lg text-center lg:text-left mb-6">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ad quis quaerat.
-                </p>
+        <div v-if="isDark" class="z-10 fixed top-0 left-0">
+            <div class="hidden md:block absolute top-0 -left-4 md:w-40 md:h-40 lg:w-72 lg:h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
 
-                <fx-row class="justify-center flex-wrap gap-6">
-                    <btn @click="isGrafik = !isGrafik" class="btn-blue">Grafik</btn>
-                    <btn class="btn-white">Kup bilet online</btn>
-                </fx-row>
-            </fx-col>
+            <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
+        </div>
 
-            <div v-if="isDark" class="z-10 fixed top-0 left-0">
-                <div class="hidden md:block absolute top-0 -left-4 md:w-40 md:h-40 lg:w-72 lg:h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+        <!-- Background -->
+        <div class="z-10 block overflow-hidden h-full w-full absolute opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark' : ''}`"></div>
 
-                <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
-            </div>
+        <div class="z-10 overlay block overflow-hidden h-screen w-screen opacity-80 absolute bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
 
-            <!-- Background -->
-            <div class="z-10 block overflow-hidden  h-full w-full absolute opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark' : ''}`"></div>
+        <!-- Grafik file -->
+        <div id="grafik" class="absolute w-screen h-screen md:w-[90%] md:h-[85%] hidden rounded scroll-mt-28 z-40 text-center transition-all bg-opacity-75 bg-dark duration-75 ease-in md:top-[100px] md:left-16 md:right-16" :class="{isGrafik: isGrafik, 'shadow-gray-light shadow-2xl': isDark, fullscreen: isFullscreen}">
+            <h2 v-if="isGrafik" class="absolute top-0 left-0 py-2 w-full text-center text-2xl text-white">Grafik - Strefy Siły</h2>
+            <btn-icon v-if="isGrafik" @click="isGrafik = !isGrafik" class="absolute right-0 top-0 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in">
+                <svg xmlns="http://www.w3.org/2000/svg bg-opacity-0 " class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </btn-icon>
 
-            <div class="z-10 overlay block overflow-hidden  h-full w-full opacity-80 absolute bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
+            <btn-icon v-if="isGrafik" @click="isFullscreen = !isFullscreen" class="absolute hidden md:block right-12 top-1 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+            </btn-icon>
 
-            <!-- Grafik file -->
-            <div id="grafik" class="absolute scroll-mt-28 top-36 left-[500px] rounded-full skew-y-12  z-40 w-14 h-14 text-center transition-all duration-75 ease-in" :class="{isGrafik: isGrafik, 'shadow-gray-light shadow-2xl': isDark}">
-                <btn v-if="isGrafik" @click="isGrafik = !isGrafik" class="absolute -right-3 top-0 text-blue hover:text-xl hover:text-orange transition-all duration-75 ease-in">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                </btn>
-                <x-img v-if="isGrafik" src="/images/info/grafik.jpg" alt="Grafik" class="w-full p-14"/>
-                <!-- <div class="absolute top-0 left-0 w-full h-full bg-dark opacity-50 "></div> -->
-                <h2 v-if="isGrafik" class="text-3xl mb-6">Grafik - Strefy Siły</h2>
-            </div>
+             <iframe width="100% " height="100%" class="p-14" style="padding-top:-100px; font-size: 16px !important;" src="https://movementarenasuwalki.gymmanager.com.pl/Reservations/Index" scrolling="yes" frameborder="0"></iframe>
+            <!-- <x-img v-if="isGrafik" src="/images/info/grafik.jpg" alt="Grafik" class="w-full p-14"/> -->
+            <!-- <div class="absolute top-0 left-0 w-full h-full bg-dark opacity-50 "></div> -->
+        </div>
 
-        </flex>
-    </div>
+    </flex>
 </template>
 
 <style lang="scss" scoped>
@@ -91,22 +102,36 @@ const isDark = useTheme();
     clip-path: circle(50% at 3% 56%);
 }
 
+.fullscreen{
+    width: 100vw !important;
+    height: 100vh !important;
+    position: fixed;
+    top: 0 !important;
+    left: 0 !important;
+    z-index: 60;
+    transition: all .3s ease-in;
+}
 .isGrafik {
-    left: 4rem ;
-    right: 4rem ;
-    top: 100px;
-    width: 90%;
-    height: 85%;
-    border-radius: 5px;
-    transform: skewY(0);
-    transition: all .1s ease-in;
+    display: block;
 }
 
 .hero {
     &-content {
         justify-content: center;
         align-items: center;
-        top: 13rem;
+        top: 25%;
+
+        @include atSmaller {
+            top: 30%;
+            width: 60%;
+            // left: 5%;
+        }
+
+        @include atSmall {
+            top: 40%;
+            width: 40%;
+            // left: 5%;
+        }
 
         @include atMedium {
             top: 50%;
