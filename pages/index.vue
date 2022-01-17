@@ -284,7 +284,7 @@ onMounted(() => {
             <information  />
         </section>
 
-        <section id="movie" ref="movieSection" class="snap-start scroll-mt-20 relative hidden md:block w-screen md:h-[390px] lg:h-[823px]">
+        <section id="movie" ref="movieSection" class="snap-start scroll-mt-12 relative hidden md:block w-screen md:h-[390px] lg:h-[823px]">
             <movie />
         </section>
 
@@ -293,7 +293,7 @@ onMounted(() => {
             <features-sm class="flex md:hidden min-h-full" :items="items" />
         </section>
 
-        <section id="feature-sm" ref="featureSection-sm" class="snap-start block mb-24 md:hidden scroll-mt-0 relative m-auto w-screen" >
+        <section id="feature-sm" ref="featureSection-sm" class="snap-start block mb-20 md:hidden scroll-mt-0 relative m-auto w-screen" >
             <features-sm class="flex md:hidden min-h-full" :items="items" />
         </section>
 
