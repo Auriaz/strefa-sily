@@ -8,10 +8,11 @@ import Layout from '~/components/layouts/Layout.vue';
 import Teams from '~/components/sections/home/Teams';
 import Information from '~/components/sections/home/Information';
 import Price from '~/components/sections/home/Price';
+import Movie from '~/components/sections/home/Movie';
 
 export default {
     name: 'Homepage',
-    components: { Btn, Hero, Features, FeaturesSm,  Teams, FxCol, Layout, Information, Price },
+    components: { Btn, Hero, Features, FeaturesSm,  Teams, FxCol, Layout, Information, Price, Movie },
     layouts: 'default',
 }
 </script>
@@ -21,8 +22,32 @@ import { ref, onMounted } from '#imports';
 
 const X = ref(null);
 const Y = ref(null);
-const informationSection = ref(null);
+const movieSection = ref(null);
 const featureSection = ref(null);
+
+const imagesHero =  ref([
+    {    
+        title: 'Sprzęt treningowy',
+        content: 'Różnorodny sprzęt i maszyny, z którymi wykonasz trening funkcjonalny.',
+        src: 'https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg',
+        width: '100%', 
+        height: '100%',
+    },    
+    {    
+        title: 'Sprzęt treningowy',
+        content: 'sfdhgdfgh',
+        src: 'https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg',
+        width: '10rem', 
+        height: '5rem',
+    },
+    {
+        title: 'Sala treningowa',
+        content: 'Przestrzenna i funkcjonalna sala, na której wykonasz swój trening.',
+        src: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg',
+        width: '20rem', 
+        height: '12rem',
+    },
+])
 
 const items = ref([
     {
@@ -32,7 +57,7 @@ const items = ref([
             alt: 'default'
         },
         title: 'Powerlifting',
-        content: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga doloremque illum, quod autem veniam sint accusantium molestiae quaerat velit, dolore officia dicta sed. Accusantium, itaque? Distinctio dolores cumque incidunt!'
+        content: ' Na zajęciach nauczysz się prawidłowej techniki oraz wzmocnisz swoją siłę. Wpłynie to korzystnie na ogólną sprawność, a także wzmocni stawy. Pracujemy na stopniu amatorskim jak i zawodowym. Zajęcia stanowią naturalny proces rozwoju dla osób chcących sięgać po większe obciążenia, w bezpieczny i kontrolowany sposób dzięki ciągłej opiece trenerskiej.'
     },
     {
         id: 1,
@@ -41,7 +66,7 @@ const items = ref([
             alt: 'default'
         },
         title: 'Cross-Training',
-        content: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga doloremque illum, quod autem veniam sint accusantium molestiae quaerat velit, dolore officia dicta sed. Accusantium, itaque? Distinctio dolores cumque incidunt!'
+        content: 'Cross to zajęcia które łączą w sobie wytrzymałość i siłę. Głównym celem zajęć jest rozwój ogólnej sprawności fizycznej. Trening charakteryzuje się wysoką intensywnością z wykorzystaniem ruchów funkcjonalnych. Zmienny charakter treningu nie pozwoli się Ci nudzić.'
     },
     {
         id: 2,
@@ -50,7 +75,7 @@ const items = ref([
             alt: 'default'
         },
         title: 'Cross Intro',
-        content: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga doloremque illum, quod autem veniam sint accusantium molestiae quaerat velit, dolore officia dicta sed. Accusantium, itaque? Distinctio dolores cumque incidunt!'
+        content: 'Celem zajęć jest wprowadzenie osób początkujących do treningu Cross-Training oraz Powerliftingu. Na zajęciach nauczysz się prawidłowej techniki oraz wzmocnisz swoją siłę. Wpłynie to korzystnie na ogólną formę i wprowadzi Cię na kolejny poziom sprawności.'
     },
     {
         id: 3,
@@ -59,24 +84,51 @@ const items = ref([
             alt: 'default'
         },
         title: 'Wake Up Cross',
-        content: ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis fuga doloremque illum, quod autem veniam sint accusantium molestiae quaerat velit, dolore officia dicta sed. Accusantium, itaque? Distinctio dolores cumque incidunt!'
+        content: 'To poranny trening typu Cross, który łączy w sobie wytrzymałość oraz siłę. Głównym celem zajęć jest rozwój ogólnej sprawności fizycznej. Trening charakteryzuje się wysoką intensywnością z wykorzystaniem ruchów funkcjonalnych. Trening na dzień dobry da Ci zastrzyk energii na cały dzień.'
+    },
+    {
+        id: 4,
+        image: {
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg',
+            alt: 'default'
+        },
+        title: 'TBC',
+        content: 'Ćwiczenia ogólnorozwojowe, angażujące wszystkie partie mięśniowe. Celem jest rzeźba całego ciała, jego ujędrnienie, poprawa wytrzymałości, wzmocnienie układu krążenia i wydolnościowego.'
+    },
+    {
+        id: 5,
+        image: {
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg',
+            alt: 'default'
+        },
+        title: 'Płaski brzuch',
+        content: 'Celem jest spalenie tkanki tłuszczowej, wzmocnienie i wyrzeźbienie mięśni brzuch, wzmocnienie mięśni core odpowiadających zaprawidłową postawę i silny brzuch.'
+    },
+        {
+        id: 6,
+        image: {
+            src: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg',
+            alt: 'default'
+        },
+        title: 'Ninja-OCR',
+        content: 'Tory przeszkód ninja i OCR.'
     },
 ]);
 
 const data = ref([
     {
         id:  0,
-        name: 'Adam',
-        surname: 'Stankiewicz',
-        image: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/07/69995255_2516287848419388_3769486607204220928_o-1024x684.jpg',
+        name: 'Paulina',
+        surname: 'Śniegowska',
+        image: '',
         role: 'Trener strefy siły',
         description: 'Bla bla bla i jeszcze raz bla',
     },
     {
         id:  1,
-        name: 'Adam',
-        surname: 'Stankiewicz',
-        image: 'https://movementarena.pl/suwalki/wp-content/uploads/2020/07/69995255_2516287848419388_3769486607204220928_o-1024x684.jpg',
+        name: 'Tomasz',
+        surname: 'Dąbrowski',
+        image: '',
         role: 'Trener strefy siły',
         description: 'Bla bla bla i jeszcze raz bla',
     },
@@ -196,8 +248,8 @@ const personalPrices = [
 ]
 
 function handleScroll() {
-    if (window.scrollY >= informationSection.value.offsetHeight + window.innerHeight ) {
-        X.value = -(window.scrollY - (informationSection.value.offsetHeight + window.innerHeight));
+    if (window.scrollY >= movieSection.value.offsetHeight + window.innerHeight * 2 ) {
+        X.value = -(window.scrollY - (movieSection.value.offsetHeight + window.innerHeight * 2 ));
     }
 
     if (X.value <= -(featureSection.value.offsetHeight - window.innerWidth)) {
@@ -205,7 +257,7 @@ function handleScroll() {
         X.value = -(featureSection.value.offsetHeight - window.innerWidth);
     }
 
-    if (window.scrollY < informationSection.value.offsetHeight) {
+    if (window.scrollY < movieSection.value.offsetHeight) {
     
         X.value = 0;
     }
@@ -225,11 +277,15 @@ onMounted(() => {
         </Html>
         
         <section id="hero" ref="heroSection" class="snap-start scroll-mt-0 relative block h-screen w-full"> 
-            <hero  />
+            <hero :imagesHero="imagesHero" />
         </section>
 
         <section id="information" ref="informationSection" class="snap-start scroll-mt-0 relative hidden md:block md:h-screen w-full"> 
             <information  />
+        </section>
+
+        <section id="movie" ref="movieSection" class="snap-start scroll-mt-20 relative hidden md:block w-screen md:h-[390px] lg:h-[823px]">
+            <movie />
         </section>
 
         <section id="feature" ref="featureSection" class="snap-start hidden md:block scroll-mt-0 min-h-full relative m-auto w-screen" :style="{'height': `${items.length * 100}vw`}" >
@@ -237,7 +293,7 @@ onMounted(() => {
             <features-sm class="flex md:hidden min-h-full" :items="items" />
         </section>
 
-        <section id="feature-sm" ref="featureSection-sm" class="snap-start block mb-20 md:hidden scroll-mt-0 relative m-auto w-screen" >
+        <section id="feature-sm" ref="featureSection-sm" class="snap-start block mb-24 md:hidden scroll-mt-0 relative m-auto w-screen" >
             <features-sm class="flex md:hidden min-h-full" :items="items" />
         </section>
 

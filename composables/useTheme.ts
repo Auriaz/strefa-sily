@@ -5,8 +5,6 @@ export const useTheme = () => {
   const isDark = ref(false);
   
   return useState('theme', () => {
-    return {
-        isDark: isDark
-    };
+      isDark: isDark
   });
 };

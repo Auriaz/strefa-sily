@@ -29,7 +29,7 @@ const isDark = useTheme();
             <!-- Info Text -->
             <fx-col class="relative w-full text-xl xl:text-2xl 2xl:text-3xl lg:mt-40  xl:mt-20 mx-5">
                 <p class=" text-blue-dark  xl:text-blue-dark" :class="`${isDark ? ' lg:text-white' : 'lg:text-blue-dark'}`" >
-                    Strefa siły jest specjalnie przygotowana do prowadzenia zajęć, ale również do cięższych ćwiczeń siłowych. Możesz tutaj powyciskać ciężary na ławeczce, ale również serię ćwiczeń obwodowych czy nawet tanecznych.
+                   <strong>Strefa siły</strong>  jest to <strong>CrossBox</strong>, który jest specjalnie przygotowany do prowadzenia zajęć. Możesz tutaj zrobić trening typu <strong>cross-training, kalisteniczny</strong>, jak i wykonać trening obwodowy czy nawet gimnastyczny. Jest to miejsce, w którym zrobisz także <strong>swój indywidualny trening siłowy</strong>.
                 </p>
             </fx-col>
 
@@ -75,14 +75,14 @@ const isDark = useTheme();
 
                     <fx-col class="flex-wrap justify-center items-start text-lg pl-3" :class="`${isDark ? ' text-gray-light' : 'text-dark'}`">
                         <p class="py-1 px-2"><span class="text-blue" >  ></span> Drążki przymocowane na stałe </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span >Hantle </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Kettle </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Gumy o różnej grubości </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Ławeczka do podnoszenia ciężarów </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Skakanki </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Piłki do Pilatesu </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Piłki o różnych ciężarach </p>
-                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Sanki obciążeniowe z możliwością nałożenia na nie ciężaru do pchania </p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span >Hantle, kettle, sztangi </p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Brama do ćwiczeń, wyciąg górny oraz dolny</p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Gumy o różnej grubości, rollery</p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Ławki do podnoszenia ciężarów</p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Liny do wspinaczki, kółka gimnastyczne</p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Skakanki, worki treningowe</p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Piłki o różnych ciężarach oraz do pilatesu </p>
+                        <p class="pb-1 px-2"><span class="text-blue" >  ></span> Sanki obciążeniowe, Ergometr, Air Bike </p>
                         <p class="pb-1 px-2"><span class="text-blue" >  ></span> Głośnik do puszczania własnej muzyki 😉 </p>
                     </fx-col>
                 </div>

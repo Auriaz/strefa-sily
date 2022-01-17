@@ -46,7 +46,7 @@ import { ref } from '#imports'
 
         <div class="card-tilt__box--content bg-blue" :class="{ 'isActive--content': isActive,  'bg-gradient-to-tl from-dark shadow-gray-light shadow': isDark}">
             <h2 class="title text-white">{{ title }}</h2>
-            <p class="content text-dark">{{ content }}</p>
+            <p class="content text-gray-light">{{ content }}</p>
         </div>
     </div>
 </div>

@@ -13,6 +13,12 @@ import BtnIcon from '~/components/buttons/BtnIcon.vue';
 export default {
     name: 'Hero',
     components: { Layout, FxRowReverse, FxCol, Btn, BtnIcon, XImg, FxRow, Flex, Logo, HeroCard },
+    props: {
+        imagesHero: {
+            type: Object,
+            required: true,
+        }
+    }
 }
 </script>
 
@@ -36,11 +42,11 @@ const isFullscreen = ref(false);
             <div class="hero-box ">
     
                 <!-- Card Hero-->
-                <hero-card class="hero-box__image hero-box__image--1" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-7-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="100%" height="100%"/>
+                <hero-card v-for="(image, index) in imagesHero" :key="index" :class="`hero-box__image hero-box__image--${index + 1}`" :img-src="image.src" :img-alt="image.title" :title="image.title" :content="image.content" :width="image.width" :height="image.height"/>
 
-                <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="10rem" height="5rem"/>
+                <!-- <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" :title="imagesHero[1].title" width="10rem" height="5rem"/>
 
-                <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" title="Nowy tytuł" width="20rem" height="12rem"/>
+                <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" :title="imagesHero[1].title" width="20rem" height="12rem"/> -->
             </div>
         </fx-row>
         

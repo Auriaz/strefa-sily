@@ -29,6 +29,7 @@ const isDark = useTheme();
             <div class="relative hidden font-extrabold mx-8 md:flex space-x-12 flex-1 md:justify-start lg:justify-center items-center md:gap-6 lg:gap-12  uppercase text-xs lg:ml-auto" >
                 <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" @click="isGrafik = !isGrafik" href="/#grafik">Grafik</a>
                 <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" href="/#information">Informacje</a>
+                <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" href="/#movie">Filmy</a>
                 <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" href="/#feature">Zajęcia </a>
                 <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" href="/#team">Trenerzy</a>
                 <a class="hover:scale-110" :class="`${isDark ? 'text-white hover:text-amber ' : 'text-blue-dark'}`" href="/#price">Cennik</a>
