@@ -43,7 +43,7 @@ const isDark = useTheme();
 
                 <!-- Actions -->
                 <fx-row class=" absolute bottom-5 justify-center left-0 right-0  flex-wrap gap-6">
-                    <btn class="btn-outlined-blue">Więcej</btn>
+                    <!-- <btn class="btn-outlined-blue"><NuxtLink :to="`/activities/${item.title}`">Więcej</NuxtLink></btn> -->
                     <btn class="btn-blue">Kup online</btn>
                 </fx-row>
             </div>
