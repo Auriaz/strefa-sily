@@ -29,12 +29,23 @@ export default {
 </script>
 
 <template>
-    <fx-row class="relative w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
-        <!-- Background -->
-        <!-- <div class="block overflow-hidden  h-full w-full absolute top-0 left-0 opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tr  from-dark via-blue bg-blue' : ''}`"></div> -->
+    <fx-row class="relative justify-center items-end w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
+        <div class="absolute top-10 text-center w-full my-3 md:my-12">
+            <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Nasze filmy</h2>
+            <h4 class="text-gray mb-5">This is a simple TailwindCSS pricing table.</h4>
+        </div>
 
-        <fx-col class="relative w-screen h-full">
+        <fx-row class="relative z-10  w-screen h-full">
             <slider-scale :items="movie"/>
-        </fx-col>       
+        </fx-row>
+        
+        <div class="overlay hidden md:block overflow-hidden h-screen w-screen absolute left-0 top-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
+        <!-- <div class="overlay hidden md:block overflow-hidden h-screen w-screen absolute opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark' : ''}`"></div> -->
     </fx-row>
 </template>
+
+<style lang="scss" scoped>
+.overlay {
+    clip-path: circle(50% at 103% 0);
+}
+</style>

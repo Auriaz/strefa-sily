@@ -90,7 +90,7 @@ export default {
     <!-- Container -->
     <div class="relative flex-col h-full w-full">
         <!-- Wrapper -->
-        <div class="relative flex flex-row flex-wrap justify-center items-center w-full h-full ">
+        <div class="relative flex flex-row flex-wrap justify-center items-end pb-16 w-full h-full ">
 
             <div class="relative mx-2 md:w-[208px] md:h-[117px] lg:w-[266px] lg:h-[149px] rounded-md">
                 <!-- Arrow Prev -->
@@ -123,7 +123,7 @@ export default {
                         <!-- {{item.src}} -->
                                                <!-- <video :src="item.src" width="100%" height="100%" muted loop autoplay></video> -->
                                                <!-- <div id="player"></div> -->
-                        <iframe width="100%" height="100%" :src="`https://www.youtube.com/embed/${item.src}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="100%" height="100%" style="padding-top:-100px; font-size: 16px !important;" :src="`https://www.youtube.com/embed/${item.src}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>

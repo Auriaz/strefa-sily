@@ -284,7 +284,7 @@ onMounted(() => {
             <information  />
         </section>
 
-        <section id="movie" ref="movieSection" class="snap-start scroll-mt-12 relative hidden md:block w-screen md:h-[390px] lg:h-[823px]">
+        <section id="movie" ref="movieSection" class="snap-start scroll-mt-0 relative hidden md:block w-full md:h-[390px] lg:h-[730px]">
             <movie />
         </section>
 

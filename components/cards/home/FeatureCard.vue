@@ -34,7 +34,7 @@ const isDark = useTheme();
             </div>
 
                 <!-- Content -->
-            <div class="feature-card-content absolute p-3 rounded shadow-gray shadow-2xl min-w-[240px] max-w-[320px] h-[380px] left-0  top-10 md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[15%] xl:left-[35%] xl:top-[-10%] xl:mt-[15%] z-10"  :class="`feature-card-content-${item.id}  ${isDark ? 'bg-dark' : 'bg-white'}`">
+            <div class="feature-card-content absolute p-3 rounded shadow-gray shadow-2xl min-w-[280px] max-w-[320px] h-[380px] left-0  top-10 md:left-[20%] lg:left-[27%] lg:top-[-22%] lg:mt-[20%] xl:left-[32%] xl:top-[-10%] xl:mt-[15%] z-10"  :class="`feature-card-content-${item.id}  ${isDark ? 'bg-dark' : 'bg-white'}`">
                 <!-- Title -->
                 <h3 class="absolute bottom-[320px] left-[0] text-4xl w-[100%] h-[60px] text-center p-3 rounded z-20" :class="`${isDark ? 'text-dark bg-gray' : 'bg-blue-dark text-blue'}`">{{ item.title }}</h3>
 
@@ -42,7 +42,7 @@ const isDark = useTheme();
                 <p class="text-gray mt-[55px] mb-4 px-2 text-center lg:text-left sm:w-3/4 lg:w-full">{{ item.content }}</p>
 
                 <!-- Actions -->
-                <fx-row class=" bottom-0 justify-center flex-wrap gap-6">
+                <fx-row class=" absolute bottom-5 justify-center left-0 right-0  flex-wrap gap-6">
                     <btn class="btn-outlined-blue">Więcej</btn>
                     <btn class="btn-blue">Kup online</btn>
                 </fx-row>

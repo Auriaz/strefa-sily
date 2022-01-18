@@ -20,15 +20,16 @@ const isDark = useTheme();
     <fx-row class="relative w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
         <!-- Background -->
         <div class="block overflow-hidden  h-full w-full absolute top-0 left-0 opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tr  from-dark via-blue bg-blue' : ''}`"></div>
-
-        <div class="overlay hidden md:block overflow-hidden h-screen w-screen opacity-80 absolute bottom-0 right-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : ''}`"></div>
+        
+        <div class="overlay-1 hidden md:block overflow-hidden h-screen w-screen absolute bottom-0 right-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : ''}`"></div>
+        <div class="overlay-2 hidden md:block overflow-hidden h-screen w-screen absolute top-0 left-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : 'bg-blue'}`" ></div>
 
         <!-- Content -->
         <fx-row class="relative flex-wrap w-full h-full md:w-[45%]  2xl:h-[100%] 3xl:h-[70%] 
         md:mx-10 xl:mx-20 xl:mt-28 2xl:mt-40">
             <!-- Info Text -->
             <fx-col class="relative w-full text-xl xl:text-2xl 2xl:text-3xl lg:mt-40  xl:mt-20 mx-5">
-                <p class=" text-blue-dark  xl:text-blue-dark" :class="`${isDark ? ' lg:text-white' : 'lg:text-blue-dark'}`" >
+                <p class=" text-blue-dark xl:text-blue-dark" :class="`${isDark ? ' lg:text-white' : 'lg:text-blue-dark'}`" >
                    <strong>Strefa siły</strong>  jest to <strong>CrossBox</strong>, który jest specjalnie przygotowany do prowadzenia zajęć. Możesz tutaj zrobić trening typu <strong>cross-training, kalisteniczny</strong>, jak i wykonać trening obwodowy czy nawet gimnastyczny. Jest to miejsce, w którym zrobisz także <strong>swój indywidualny trening siłowy</strong>.
                 </p>
             </fx-col>
@@ -88,14 +89,17 @@ const isDark = useTheme();
                 </div>
             </fx-col>
         </fx-row>
-        
     </fx-row>
 </template>
 
 <style lang="scss" scoped>
 @import '~/assets/css/abstracts/_variables/colors';
-.overlay {
+.overlay-1 {
     clip-path: circle(50% at 3% -44%);
+}
+
+.overlay-2 {
+    clip-path: circle(50% at 103% 100%);
 }
 
 .card {

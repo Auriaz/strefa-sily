@@ -35,7 +35,7 @@ const isFullscreen = ref(false);
     <!-- Hero -->
     <flex class="relative flex-wrap justify-center w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
         <!-- logo -->
-        <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none top-0 z-20 w-36 h-36 sm:top-10 md:fixed md:left-10 xl:w-48 xl:h-48" />
+        <logo src="/images/logo/logo.svg" alt="Logo" class="relative bg-none top-0 z-20 w-36 h-36 sm:top-5 md:fixed md:left-5 xl:w-40 xl:h-40" />
         
         <!-- Image -->
         <fx-row class="hidden md:flex w-screen h-screen justify-center md:flex-1">
@@ -43,22 +43,17 @@ const isFullscreen = ref(false);
     
                 <!-- Card Hero-->
                 <hero-card v-for="(image, index) in imagesHero" :key="index" :class="`hero-box__image hero-box__image--${index + 1}`" :img-src="image.src" :img-alt="image.title" :title="image.title" :content="image.content" :width="image.width" :height="image.height"/>
-
-                <!-- <hero-card class="hero-box__image hero-box__image--2" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2019/04/MAS_2-5-1024x683.jpg" img-alt="Hero image" :title="imagesHero[1].title" width="10rem" height="5rem"/>
-
-                <hero-card class="hero-box__image hero-box__image--3" img-src="https://movementarena.pl/suwalki/wp-content/uploads/2020/06/MG_0530-1024x683.jpg" img-alt="Hero image" :title="imagesHero[1].title" width="20rem" height="12rem"/> -->
             </div>
         </fx-row>
         
         <!-- Content -->
-        <fx-col class="hero-content z-30 absolute flex-wrap text-center py-4 px-4">
-            <h2 class="mb-6 font-bold text-4xl text-center md:text-left lg:text-5xl xl:text-6xl" :class="`${isDark ? 'text-white': 'text-blue-dark'}`">
-                
+        <fx-col class="hero-content z-30 absolute flex-wrap py-4 px-4">
+            <h2 class="mb-6 font-bold text-4xl md:text-left lg:text-5xl xl:text-6xl" :class="`${isDark ? 'text-white': 'text-blue-dark'}`">              
                 <span :class="`${isDark ? 'text-blue': 'text-dark'}`">S</span>trefa
                 <span :class="`${isDark ? 'text-blue': 'text-dark'}`">S</span>iły
             </h2>
 
-            <p class=" text-dark text-lg text-center lg:text-left mb-6">
+            <p class="w-[87%] ml-[10%] text-dark text-lg text-center lg:text-left mb-6">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ad quis quaerat.
             </p>
 
@@ -69,15 +64,15 @@ const isFullscreen = ref(false);
         </fx-col>
 
         <div v-if="isDark" class="z-10 fixed top-0 left-0">
-            <div class="hidden md:block absolute top-0 -left-4 md:w-40 md:h-40 lg:w-72 lg:h-72 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+            <div class="hidden md:block absolute top-0 -left-4 md:w-40 md:h-40 lg:w-60 lg:h-60 bg-purple rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
 
-            <div class="hidden md:block absolute top-0 -left-4 w-72 h-72 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
+            <div class="hidden md:block absolute top-0 -left-4 w-60 h-60 bg-blue rounded-full mix-blend-multiply filter blur-2xl opacity-40 animate-blob animation-delay-2000"></div>
         </div>
 
         <!-- Background -->
         <div class="z-10 block overflow-hidden h-full w-full absolute opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark' : ''}`"></div>
 
-        <div class="z-10 overlay block overflow-hidden h-screen w-screen opacity-80 absolute bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
+        <div class="z-10 overlay block overflow-hidden h-screen w-screen absolute bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>
 
         <!-- Grafik file -->
         <div id="grafik" class="absolute w-screen h-screen md:w-[90%] md:h-[85%] hidden rounded scroll-mt-28 z-40 text-center transition-all bg-opacity-75 bg-dark duration-75 ease-in md:top-[100px] md:left-16 md:right-16" :class="{isGrafik: isGrafik, 'shadow-gray-light shadow-2xl': isDark, fullscreen: isFullscreen}">
@@ -94,7 +89,7 @@ const isFullscreen = ref(false);
                 </svg>
             </btn-icon>
 
-             <iframe width="100% " height="100%" class="p-14" style="padding-top:-100px; font-size: 16px !important;" src="https://movementarenasuwalki.gymmanager.com.pl/Reservations/Index" scrolling="yes" frameborder="0"></iframe>
+             <iframe width="100% " height="100%" class="p-14" style="padding-top:-100px; font-size: 16px !important;" src="https://movementarenasuwalki.gymmanager.com.pl/Reservations/Index" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <!-- <x-img v-if="isGrafik" src="/images/info/grafik.jpg" alt="Grafik" class="w-full p-14"/> -->
             <!-- <div class="absolute top-0 left-0 w-full h-full bg-dark opacity-50 "></div> -->
         </div>
@@ -124,7 +119,7 @@ const isFullscreen = ref(false);
 .hero {
     &-content {
         justify-content: center;
-        align-items: center;
+        // align-items: center;
         top: 25%;
 
         @include atSmaller {
@@ -148,13 +143,13 @@ const isFullscreen = ref(false);
         @include atLarge {
             top: 40%;
             left: 8%;
-            width: 30%;
+            width: 25%;
         }
 
         @include atExtraLarge {
             top: 50%;
-            left: 5%;
-            width: 28%;
+            left: 0;
+            width: 25%;
         }
     } 
 
