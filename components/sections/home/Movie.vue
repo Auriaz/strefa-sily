@@ -16,27 +16,20 @@ export default {
 
 <script setup>
     const isDark = useTheme();
-    const movie = [
-        { src: "10XjhfUvW-4"},
-        { src: "rBPktD5ck1k"},
-        { src: "zfCMD9tsorg"},
-        { src: "C8bk9lkQp2g"},
-        { src: "LJxfojXsLzk"},
-        { src: "-mxJDBQdURI"},
-        { src: "YVFCezwHqNo"},
-        { src: "Zk076tZBnMI"},
-    ]
+    const props = defineProps({
+        movies: Object,
+    });
 </script>
 
 <template>
-    <fx-row class="relative justify-center items-end w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
-        <div class="absolute top-10 text-center w-full my-3 md:my-12">
+    <fx-row class="relative justify-center items-end w-full h-full " :class="`${isDark ? 'bg-dark': 'bg-white'}`">
+        <!-- <div class="absolute top-10 text-center w-full my-3 md:my-12 z-10">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Nasze filmy</h2>
             <h4 class="text-gray mb-5">This is a simple TailwindCSS pricing table.</h4>
-        </div>
+        </div> -->
 
         <fx-row class="relative z-10  w-screen h-full">
-            <slider-scale :items="movie"/>
+            <slider-scale :items="movies"/>
         </fx-row>
         
         <div class="overlay hidden md:block overflow-hidden h-screen w-screen absolute left-0 top-0" :class="`${isDark ? 'bg-gradient-to-tl from-blue via-blue bg-dark ' : 'bg-blue'}`" ></div>

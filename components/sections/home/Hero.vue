@@ -54,12 +54,17 @@ const isFullscreen = ref(false);
             </h2>
 
             <p class="w-[87%] ml-[10%] text-dark text-lg text-center lg:text-left mb-6">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima ad quis quaerat.
+                "Prawdziwa siła nie pochodzi z fizycznych zdolności. Pochodzi z niezłomnej woli"
+                <!-- <p class="absolute  right-0 bottom-0">Mahatma Gandhi</p> -->
             </p>
 
             <fx-row class="justify-center flex-wrap gap-6">
                 <btn @click="isGrafik = !isGrafik" class="btn-blue">Grafik</btn>
-                <btn class="btn-white">Kup bilet online</btn>
+                <btn class="btn-white">
+                    <a href="https://movementarenasuwalki.gymmanager.com.pl/Buypass/Passes" target="_blank" >
+                        Kup bilet online
+                    </a>
+                </btn>
             </fx-row>
         </fx-col>
 

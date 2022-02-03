@@ -17,6 +17,14 @@ export default {
         const difference = ref(0);
         const prev = ref(false);
         const next = ref(true);
+        // const config = useRuntimeConfig();
+        const urls = ref([]);
+        const videos =  ref([]);
+
+        props.items.forEach(item => {
+            // urls.value.push(config.API_URL + item.attributes.movie.data.attributes.url);
+            urls.value.push(item.video.url);
+        });
 
         function selectSlide(index) {
             difference.value += indexSelected.value - index;
@@ -33,6 +41,8 @@ export default {
             } else {
                 prev.value = false;
             }
+
+            PlayPauseVideo(indexSelected.value);
         }
 
         function positionNoSelectedSlide(index) {
@@ -62,26 +72,39 @@ export default {
             }
         }
 
+        function PlayPauseVideo(index) {
+            const videoMain = document.getElementById(`slider-video-${index}`);
+            videos.value.forEach(video => {
+                if(video == videoMain) {
+                    if(videoMain.pause) {
+                        videoMain.play();
+                    } else {
+                        videoMain.pause()
+                    }
+                } else {
+                    video.pause()
+                }
+            })
+        }
+
+        function getVideos() {
+            props.items.forEach((items, index) => {
+                videos.value.push(
+                    document.getElementById(`slider-video-${index}`)
+                );
+            })
+        }
+
+        onMounted(() => {
+            getVideos();
+            PlayPauseVideo(0);
+        })
+
         return {
-            indexSelected, difference, prev, next, selectSlide, positionNoSelectedSlide, prevSlide, nextSlide,
+            indexSelected, difference, prev, next, selectSlide, positionNoSelectedSlide, prevSlide, nextSlide, urls, PlayPauseVideo
         }
     },
-    onMounted() {
-    //           var player;
-    //   function onYouTubeIframeAPIReady() {
-        
-    //     player = new YT.Player('player', {
-    //       height: '360',
-    //       width: '640',
-    //       videoId: 'M7lc1UVf-VE',
-    //       events: {
-    //         'onReady': onPlayerReady,
-    //         'onStateChange': onPlayerStateChange
-    //       }
-    //     });
-    //   }
 
-    }
  
 }
 </script>
@@ -120,10 +143,10 @@ export default {
 
                     <!-- Content -->
                     <div class="w-full h-full rounded-md overflow-hidden">
-                        <!-- {{item.src}} -->
-                                               <!-- <video :src="item.src" width="100%" height="100%" muted loop autoplay></video> -->
-                                               <!-- <div id="player"></div> -->
-                        <iframe width="100%" height="100%" style="padding-top:-100px; font-size: 16px !important;" :src="`https://www.youtube.com/embed/${item.src}`" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <video :id="`slider-video-${index}`" :src="urls[index]" width="100%" height="100%" muted loop ></video>
+                        <span :class="index == indexSelected ? 'scale-100 opacity-100': 'scale-0 opacity-0'"  class="transition-all delay-100 duration-300 absolute w-full h-[25%] left-0 bottom-0 flex flex-wrap flex-row justify-center items-center text-[0.5rem] bg-opacity-30 bg-blue-dark rounded-lg">
+                            <p class="font-Lato p-1 text-gray-light" v-html="item.quote"></p>
+                        </span>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@ export default {
   components: { FxRow, Btn, FxCol },
     name:"FeatureSm",
     props: {
-        items: {
+        activities: {
             type: Object,
             required: true
         }
@@ -17,16 +17,16 @@ export default {
 
 <script setup>
 const isDark = useTheme();
+
 </script>
 
 <template>
 <fx-col class="relative flex-grow flex-wrap h-full w-full">
     <div class="text-center w-full my-3">
-        <h2 class="font-extrabold tracking-tight mb-2 text-3xl">Zajęcia</h2>
-        <h4 class="text-gray mb-5">This is a simple TailwindCSS pricing table.</h4>
+        <h2 class="font-extrabold tracking-tight text-3xl">Zajęcia</h2>
     </div>
 
-    <div v-for="item in items" :key="item.id" class="p-3 m-5 relative rounded shadow-gray shadow-2xl min-w-[240px] max-w-[320px] h-[460px] left-0  top-10 z-10 "  :class="`${isDark ? 'bg-dark' : 'bg-white'}`">
+    <div v-for="(item, index) in activities" :key="index" class="p-3 m-5 relative rounded shadow-gray shadow-2xl min-w-[260px] max-w-[320px] h-[460px] left-0  top-10 z-10 "  :class="`${isDark ? 'bg-dark' : 'bg-white'}`">
         <!-- Title -->
         <h3 class="absolute bottom-[400px] left-[0] text-3xl w-[100%] h-[60px] text-center p-3 rounded z-20" :class="`${isDark ? 'text-dark bg-gray' : 'bg-blue-dark text-blue'}`">{{ item.title }}</h3>
 
@@ -35,8 +35,12 @@ const isDark = useTheme();
 
         <!-- Actions -->
         <fx-row class="absolute bottom-5 justify-center left-0 right-0 flex-wrap gap-6">
-            <btn class="btn-outlined-blue">Click</btn>
-            <btn class="btn-blue">Click</btn>
+            <!-- <btn class="btn-outlined-blue">Więcej</btn> -->
+            <btn class="btn-blue">
+                <a href="https://movementarenasuwalki.gymmanager.com.pl/Buypass/Passes" target="_blank" >
+                    Kup online
+                </a>
+            </btn>
         </fx-row>
     </div>
 </fx-col>

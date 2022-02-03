@@ -13,59 +13,102 @@ export default {
 </script>
 
 <script setup>
+import { onMounted, ref } from '#imports';
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const isDark = useTheme();
+const props = defineProps({
+    information: Object,
+});
+
+// const config = useRuntimeConfig();
+// const url = config.API_URL + props.information.image.data.attributes.formats.medium.url;
+onMounted(() => {
+    let elements = gsap.utils.toArray('.info-container-1');
+    let elements2 = gsap.utils.toArray('.info-container-2');
+
+    elements.forEach((el, index )=> {
+        gsap.fromTo(el, {
+            x: '-=300',
+            opacity: 0,
+        }, {
+            opacity: 1,
+            x: 0,
+            delay: index,
+            duration: 2,
+            ease: 'elastic',
+            scrollTrigger: {
+                trigger: '.info-container-1',
+                start: '-200px top',
+                end: "150px 350px",
+            },
+        });
+    });
+
+    elements2.forEach((el, index )=> {
+        gsap.fromTo(el, {
+            x: '+=300',
+            opacity: 0,
+        }, {
+            opacity: 2,
+            x: 0,
+            delay: index,
+            duration: 1,
+            ease: 'elastic',
+            scrollTrigger: {
+                trigger: '.info-container-2',
+                start: '-150px top',
+                end: "150px 350px",
+            },
+        });
+    });
+});
+
+
 </script>
 
 <template>
     <fx-row class="relative w-full h-full" :class="`${isDark ? 'bg-dark': 'bg-white'}`">
         <!-- Background -->
-        <div class="block overflow-hidden  h-full w-full absolute top-0 left-0 opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tr  from-dark via-blue bg-blue' : ''}`"></div>
+        <div class="hidden md:block overflow-hidden  h-full w-full absolute top-0 left-0 opacity-30 bottom-0 right-0" :class="`${isDark ? 'bg-gradient-to-tr  from-dark via-blue bg-blue' : ''}`"></div>
         
-        <div class="overlay-1 hidden md:block overflow-hidden h-screen w-screen absolute bottom-0 right-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : ''}`"></div>
+        <div class="overlay-1 block overflow-hidden h-screen w-screen absolute bottom-0 right-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : ''}`"></div>
         <div class="overlay-2 hidden md:block overflow-hidden h-screen w-screen absolute top-0 left-0 bg-blue" :class="`${isDark ? 'bg-gradient-to-tr from-dark via-blue' : 'bg-blue'}`" ></div>
 
         <!-- Content -->
-        <fx-row class="relative flex-wrap w-full h-full md:w-[45%]  2xl:h-[100%] 3xl:h-[70%] 
-        md:mx-10 xl:mx-20 xl:mt-28 2xl:mt-40">
+        <div class="info-container-1 relative flex flex-col md:flex-row flex-wrap justify-center items-center sm:w-[100vw] md:h-full md:w-[45%]  2xl:h-[100%] 3xl:h-[70%] 
+        md:mx-10 xl:mx-20 xl:mt-12 2xl:mt-20">
             <!-- Info Text -->
-            <fx-col class="relative w-full text-xl xl:text-2xl 2xl:text-3xl lg:mt-40  xl:mt-20 mx-5">
-                <p class=" text-blue-dark xl:text-blue-dark" :class="`${isDark ? ' lg:text-white' : 'lg:text-blue-dark'}`" >
-                   <strong>Strefa siły</strong>  jest to <strong>CrossBox</strong>, który jest specjalnie przygotowany do prowadzenia zajęć. Możesz tutaj zrobić trening typu <strong>cross-training, kalisteniczny</strong>, jak i wykonać trening obwodowy czy nawet gimnastyczny. Jest to miejsce, w którym zrobisz także <strong>swój indywidualny trening siłowy</strong>.
-                </p>
+            <fx-col class="relative w-full text-xl  mt-0 xl:text-2xl 2xl:text-3xl lg:mt-40 xl:mt-20 p-1 md:p-0 md:mx-5">
+                <p v-html="information.content" class=" text-blue-dark xl:text-blue-dark" :class="`${isDark ? ' lg:text-white' : 'lg:text-blue-dark'}`" ></p>
             </fx-col>
 
             <!-- Card info -->
-            <fx-row class="card relative w-full h-[400px] overflow-hidden z-10 justify-center items-center text-indigo rounded-lg hover:scale-110">
-                <span class="animate-snake1 absolute top-0 left-0 w-full h-[3px] animation-delay-1000" :class="{'flex': isDark}"></span>
-                <span class="animate-snake2 absolute top-0 right-0 w-[3px] h-full"></span>
-                <span class="animate-snake3 absolute bottom-0 left-0 w-full h-[3px] animation-delay-1000"></span>
-                <span class="animate-snake4 absolute top-0 left-0 w-[3px] h-full"></span>
+            <fx-row class="card relative w-[300px] h-[200px] overflow-hidden z-10 justify-center items-center text-indigo rounded-lg hover:scale-110">
+                <span class="hidden md:inline-block animate-snake1 absolute top-0 left-0 w-full h-[3px] animation-delay-1000" :class="{'flex': isDark}"></span>
+                <span class="hidden md:inline-block animate-snake2 absolute top-0 right-0 w-[3px] h-full"></span>
+                <span class="hidden md:inline-block animate-snake3 absolute bottom-0 left-0 w-full h-[3px] animation-delay-1000"></span>
+                <span class="hidden md:inline-block animate-snake4 absolute top-0 left-0 w-[3px] h-full"></span>
                 
-                <fx-col class="card_content  z-20 p-8">
-                    <h2 class="py-2 text-xl xl:text-2xl" :class="`${isDark ? ' text-white' : 'text-blue-dark'}`" > Godziny otwarcia : </h2>
-                    <!-- <h3 class="text-center text-xl">Strefy Siły</h3> -->
-                    <!-- <a href="">Wiecej informacji tutaj</a> -->
+                <fx-col class="card_content z-20 py-2 px-4">
+                    <h2 class="pb-2 text-xl xl:text-2xl" :class="`${isDark ? ' text-white' : 'text-blue-dark'}`" > Godziny otwarcia : </h2>
+
                     <fx-col  class="flex-wrap justify-center items-start lg:text-md xl:text-lg px-3" :class="`${isDark ? ' text-gray-light' : 'text-dark'}`">
-                        <p class="py-1 px-2">Poniedziałek: 9:00 - 20:00</p>
-                        <p class="py-1 px-2">Wtorek : 9:00 - 20:00</p>
-                        <p class="py-1 px-2">Środa :  9:00 - 20:00</p>
-                        <p class="py-1 px-2">Środa :  9:00 - 20:00</p>
-                        <p class="py-1 px-2">Czwartek : 9:00 - 20:00</p>
-                        <p class="py-1 px-2">Piątek : 9:00 - 20:00</p>
-                        <p class="py-1 px-2">Sobota : 10:00 - 20:00</p>
-                        <p class="py-1 px-2">Niedziela : 10:00 - 20:00</p>
+                        <p v-html="information.openHours" class="py-1 px-2"></p>
                     </fx-col>
                 </fx-col>
             </fx-row>
-        </fx-row>
+        </div>
 
         <!-- Next Content  -->
-        <fx-row class="relation flex-wrap w-full h-full lg:w-[55%] 2xl:h-[100%] 3xl:h-[70%] md:mx-10 2xl:mx-20 2xl:mt-24  3xl:mt-72">
-            <fx-col class=" relative overflow-hidden z-10 lg:w-[460px] xl:w-[560px] xl:h-[315px] justify-center items-center md:mt-16 mb-12 p-0">
-                <iframe class="m-0 p-0" width="100%" height="100%" src="https://www.youtube.com/embed/C8bk9lkQp2g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <div class="info-container-2 relation hidden md:flex flex-col md:flex-row flex-wrap w-full h-full lg:w-[55%] 2xl:h-[100%] 3xl:h-[70%] md:mx-10 2xl:mx-20 2xl:mt-5  3xl:mt-32">
+            <fx-col class="relative hidden lg:block overflow-hidden z-10 lg:w-[460px] xl:w-[560px] xl:h-[315px] justify-center items-center md:mt-16 mb-12 p-0">
+               <x-img :src="information.image.url" :alt="information.image.name" />
+
             </fx-col>
             <!-- Card info -->
-            <fx-col class="card relative h-[405px] overflow-hidden z-10 justify-center items-center hover:scale-110">
+            <fx-col class="card relative w-[420px] h-[405px] overflow-hidden z-10 justify-center items-center hover:scale-110">
                 <span class="animate-snake1 absolute top-0 left-0 w-full h-[3px] animation-delay-1000" :class="{'flex': isDark}"></span>
                 <span class="animate-snake2 absolute top-0 right-0 w-[3px] h-full"></span>
                 <span class="animate-snake3 absolute bottom-0 left-0 w-full h-[3px] animation-delay-1000"></span>
@@ -88,7 +131,7 @@ const isDark = useTheme();
                     </fx-col>
                 </div>
             </fx-col>
-        </fx-row>
+        </div>
     </fx-row>
 </template>
 

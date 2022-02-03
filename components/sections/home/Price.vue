@@ -6,25 +6,43 @@ export default {
     components: {
         Btn, 
     },
-    props: {
-        personalPrices: {
-            type: Object,
-            required: true,
-        },
-        prices: {
-            type: Object,
-            required: true,
-        },
-    }
 }
 </script>
 
 <script setup>
-import { onMounted } from '#imports';
+import { onMounted, ref } from '#imports';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const isDark = useTheme();
+const props = defineProps({
+    prices: Object,
+    personalPrices: Object,
+});
+
+// const basicPrices = ref([]);
+// const personalPrices = ref([]);
+
+
+// props.prices.forEach(price => {
+//     if(!price.attributes.isPersonal) {
+//         basicPrices.value.push({
+//             title: price.title,
+//             price: price.price,
+//             single: price.attributes.isSingle,
+//             package: price.attributes.price_packages.data
+//         });
+//     } 
+
+//     if(price.attributes.isPersonal) {
+//         personalPrices.value.push({
+//             title: price.attributes.title,
+//             price: price.attributes.price,
+//             single: price.attributes.isSingle,
+//             package: price.attributes.price_packages.data
+//         });
+//     }
+// })
 
 onMounted(() => {
     let elements = gsap.utils.toArray('.price__box');
@@ -32,22 +50,20 @@ onMounted(() => {
     elements.forEach(el => {
 
         gsap.fromTo(el, {
-            y: '-=100',
+            y: '-=300',
             opacity: 0,
         }, {
             opacity: 1,
             y: 0,
             duration: 1,
             delay: .2,
-            // stagger: 0.2,
             ease: 'easeInOut',
             scrollTrigger: {
                 trigger: '.price__container',
                 start: '-150px top',
                 end: "150px 350px",
-                scrub: true,
-                // markers: true,
-                toggleActions: 'restart pause reverse pause',
+                // scrub: true,
+                // toggleActions: 'restart pause reverse pause',
             },
         });
     });
@@ -62,8 +78,8 @@ onMounted(() => {
         </div>
 
         <div class="price__box relative flex flex-col md:flex-row flex-wrap w-full px-2 md:px-0 mt-10 justify-center items-center gap-6 snap-x">
-            <!-- Price card -->
-            <div v-for="price in prices" :key="price.id"  class="price-card bg-white relative flex flex-col w-full min-h-max md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
+            <!-- Price card basic -->
+            <div v-for="(price, index) in prices" :key="index"  class="price-card bg-white relative flex flex-col w-full h-[480px] md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
                 <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
@@ -78,7 +94,11 @@ onMounted(() => {
                 </div>
 
                 <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
-                    <btn class=" btn-indigo hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
+                    <btn class=" btn-indigo hover:shadow-xl transition duration-150 ease-in-out w-full">
+                        <a href="https://movementarenasuwalki.gymmanager.com.pl/Buypass/Passes" target="_blank" >
+                            Kup online
+                        </a>
+                    </btn>
                 </div>
             </div>
         </div>
@@ -87,10 +107,9 @@ onMounted(() => {
             <h3 class="text-gray text-3xl mb-5">Treningi personalne</h3>
         </div>
 
-        
         <div class="price__box relative flex flex-col md:flex-row flex-wrap w-full px-2 md:px-0 mt-10 justify-center items-center gap-8 snap-x">
-            <!-- Price card -->
-            <div v-for="price in personalPrices" :key="price.id" class="price-card relative flex flex-col w-full min-h-min md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
+            <!-- Price card personal -->
+            <div v-for="(price, index) in personalPrices" :key="index" class="price-card relative flex flex-col w-full h-[480px] md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 rounded-lg shadow shadow-gray-light hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0" :class="`${isDark ? 'bg-dark' : 'bg-blue-dark'}`">
                 <h3 class="price-card__title rounded  text-2xl text-bold  mb-4" :class="`${isDark ? 'text-gray-light' : 'text-blue'}`">{{ price.title }}</h3>
 
                 <p class="price-card__price text-gray mt-1"> <span class="font-bold text-gray-light text-4xl">{{ price.price }}</span> zł</p>
@@ -106,7 +125,11 @@ onMounted(() => {
                 </div>
 
                 <div class="price-card__action absolute bottom-3 left-3 right-3 flex justify-center items-center">
-                    <btn class="btn-outlined-blue hover:shadow-xl transition duration-150 ease-in-out w-full">Zakup online</btn>
+                    <btn class="btn-outlined-blue hover:shadow-xl transition duration-150 ease-in-out w-full">
+                        <a href="https://movementarenasuwalki.gymmanager.com.pl/Buypass/Passes" target="_blank" >
+                            Kup online
+                        </a>
+                    </btn>
                 </div>
             </div>
         </div>
