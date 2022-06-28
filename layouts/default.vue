@@ -24,5 +24,7 @@ const isDark = useTheme();
         <main class="container relative w-full ">
             <slot />
         </main>
+
+        <footer class="relative  w-full h-64"></footer>
     </app>
 </template>
