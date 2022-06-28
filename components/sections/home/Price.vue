@@ -82,7 +82,7 @@ onMounted(() => {
             <div v-for="(price, index) in prices" :key="index"  class="price-card bg-white relative flex flex-col w-full h-[480px] md:min-w-[240px] md:max-w-[320px] md:max-h-[700px] hover:scale-110 hover:bg-white rounded-lg shadow shadow-dark hover:shadow-xl  transition duration-100 ease-in-out p-6 md:mr-4 mb-10 md:mb-0">
                 <h3 class="price-card__title text-dark text-2xl text-bold mb-4">{{ price.title }}</h3>
 
-                <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="price.single">za miesiąc</span> </p>
+                <p class="price-card__price text-gray mt-1"> <span class="font-bold text-indigo text-4xl">{{ price.price }}</span>zł <span v-if="!price.single">za miesiąc</span> </p>
 
                 <div class="price-card__package text-lg text-dark mt-6 mb-16">
                     <h3>Pakiet składa się z: </h3>
