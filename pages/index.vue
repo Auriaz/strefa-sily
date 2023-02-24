@@ -248,7 +248,7 @@ const prices = [
         classes: false,
         freeEntry: true,
         single: false,
-        price: 85,
+        price: 95,
         package: [
             {info: 'Wejścia wolne'},
             {info: 'Ważny 30 dni'},
@@ -396,13 +396,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <flex class="flex-wrap justify-center snap-y snap-mandatory relative w-full min-h-full transition duration-500 ease-in-out">
-        <Html>
-            <Head>
-                <Title>Strefa Siły</Title>
-            </Head>
-        </Html>
-        
+    <div class="flex flex-wrap justify-center snap-y snap-mandatory relative w-full min-h-full transition duration-500 ease-in-out">
         <section id="hero" ref="heroSection" class="snap-start scroll-mt-0 relative block h-screen w-full"> 
             <hero :imagesHero="imagesHero" />
         </section>
@@ -430,5 +424,5 @@ onMounted(() => {
         <section id="price" ref="priceSection" class="snap-start scroll-mt-0 relative block m-auto w-full min-h-full" >
             <price :prices="prices"  :personalPrices="personalPrices" />
         </section>
-    </flex>
+    </div>
 </template>

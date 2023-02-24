@@ -75,6 +75,7 @@ onMounted(() => {
         <div class="text-center w-full my-12">
             <h2 class="font-extrabold tracking-tight mb-2 text-3xl xl:text-5xl lg:text-4xl">Cennik</h2>
             <h3 class="text-gray text-3xl mb-5">Zajęcia plus wolne wejścia.</h3>
+            <p>Do pierwszego zakupu karnetu doliczamy 10 zł za kartkę klubowa.</p>
         </div>
 
         <div class="price__box relative flex flex-col md:flex-row flex-wrap w-full px-2 md:px-0 mt-10 justify-center items-center gap-6 snap-x">
